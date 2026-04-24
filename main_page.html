@@ -6,6 +6,34 @@
     <title>Study Buddy</title>
 </head>
 
+<!--container for styling main and side bar side by side-->
+<style>
+    .container {
+    display: flex; 
+    } 
+
+    .sidebar {
+        width:300px;
+        border-radius:30px;
+        padding:20px;
+        display:flex;
+        flex-direction:column;
+        background-color:gray;
+    }
+
+    .main{
+        flex:1;
+        display:flex;
+        flex-direction: column;
+        text-align:center;
+        align-items:center;
+        justify-content: center;
+        background-color:aquamarine;
+        border-radius: 15px;
+    }
+
+
+</style>
 <body>
     <div class="Header">
         <h1>Welcome to Study Buddy</h1>
@@ -20,20 +48,25 @@
              <h2>STUDY BUDDY</h2>
          </div>
           <ul>
-            <li><a href="#">MANAGE NOTES</a></li>
-            <li><a href="#">CALENDAR</a></li>
-            <li><a href="#">QUIZ AND REVISION</a></li>
-            <li><a href="#">ACHIEVEMENTS</a></li>
-            <li><a href="#">SETTINGS</a></li>
+            <li><a href="#">MANAGE NOTES</a></li><br>
+            <li><a href="#">CALENDAR</a></li><br>
+            <li><a href="#">QUIZ AND REVISION</a></li><br>
+            <li><a href="#">ACHIEVEMENTS</a></li><br>
+            <li><a href="#">SETTINGS</a></li><br>
           </ul>
 
       </div>
-    </div>
+    
 
-    <div class="main_content">
-        <h2>STUDY BUDDY</h2>
-        <button>START STUDYING NOW</button>
-    </div>
+      <div class="main">
+          <h2>STUDY BUDDY</h2>
+          <button>START STUDYING NOW</button>
+      </div>
+    </div>  
+
+
+
+
 
     
 
