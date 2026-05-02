@@ -1,74 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Buddy</title>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Buddy</title>
 
-<!--container for styling main and side bar side by side-->
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body{
+        height:100vh;
+    }
+
     .container {
-    display: flex; 
+        display: flex;
     } 
 
     .sidebar {
-        width:300px;
-        border-radius:30px;
-        padding:20px;
-        display:flex;
-        flex-direction:column;
-        background-color:gray;
-    }
-
-    .main{
-        flex:1;
-        display:flex;
+        width: 300px;
+        height: 90vh;
+        border-radius: 30px;
+        padding: 20px;
+        display: flex;
         flex-direction: column;
-        text-align:center;
-        align-items:center;
+        background-color: #9682ed;
+        color: white;
+        margin-top: 20px;
+        margin-bottom:20px;
+        margin-left: 20px;;
+    }
+
+    .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .x_button button {
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        color: white;
+        margin-bottom: 7px;
+    }
+
+    .menu_items {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 5px;
+        cursor: pointer;
+        background-color: #9d73c0b5;
+        border-radius: 10px;
+    }
+
+    .menu_items:hover {
+        opacity: 0.7;
+    }
+
+    .main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
         justify-content: center;
-        background-color:aquamarine;
-        border-radius: 15px;
+        border-radius: 20px;
     }
 
 
+    .button {
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        color:rgb(255, 255, 255);
+        background-color: rgb(165, 165, 165);
+        transition: 0.3s;
+    }
+
+    .button:hover {
+        background-color: #9682ed;
+    }
+
+
+    
 </style>
-<body>
-    <div class="Header">
-        <h1>Welcome to Study Buddy</h1>
-        <p>Study with a buddy</p>
+</head>
+
+<body style="background-color:#f5f5f5;">
+
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>STUDY BUDDY</h2>
+            <div class="x_button">
+                <button>☰</button>
+            </div>
+        </div>
+
+        <!-- Menu items -->
+        
+        <div class="menu_items" style="margin-bottom: 30px; margin-top: 30px;">
+            <div class="icon">📚</div>
+            <span>Study Resources</span>
+        </div>
+
+        <div class="menu_items" style="margin-bottom: 30px;">
+            <div class="icon">🔄</div>
+            <span>Quiz and Revision</span>
+        </div>
+
+        <div class="menu_items" style="margin-bottom: 30px;">
+            <div class="icon">📅</div>
+            <span>Calendar</span>
+        </div>
+
+        <div class="menu_items" style="margin-bottom: 30px;">
+            <div class="icon">⚙️</div>
+            <span>Settings</span>
+        </div>
     </div>
 
+    <!-- Main content -->
+    <div class="main">
+        <p style="font-size: 45px; margin-bottom: 10px;"><b>STUDY BUDDY</b></p>
+        <p style="font-size: 18px; margin-bottom: 20px;">Welcome to your personal study assistant!</p>
+        <button class="button"><p style="font-size: 32px;">START STUDYING NOW</p></button>
+    </div>
 
-
-    <div class="container">
-      <div class="sidebar">
-         <div class="sidebar-header">
-             <h2>STUDY BUDDY</h2>
-         </div>
-          <ul>
-            <li><a href="#">MANAGE NOTES</a></li><br>
-            <li><a href="#">CALENDAR</a></li><br>
-            <li><a href="#">QUIZ AND REVISION</a></li><br>
-            <li><a href="#">ACHIEVEMENTS</a></li><br>
-            <li><a href="#">SETTINGS</a></li><br>
-          </ul>
-
-      </div>
-    
-
-      <div class="main">
-          <h2>STUDY BUDDY</h2>
-          <button>START STUDYING NOW</button>
-      </div>
-    </div>  
-
-
-
-
-
-    
+</div>
 
 </body>
 </html>
