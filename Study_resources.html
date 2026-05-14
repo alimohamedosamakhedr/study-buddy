@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Study Buddy - Study Resources</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Comic Sans MS;
+}
+
+body{
+    background:#f5f5f5;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+.container{
+    display:flex;
+    gap:0;
+    height:100vh;
+}
+
+    .sidebar {
+        width: 300px;
+        height: 90vh;
+        border-radius: 30px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        background-color: #9682ed;
+        color: white;
+        margin-top: 20px;
+        margin-bottom:20px;
+        margin-left: 20px;;
+    }
+
+
+.sidebar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.x_button button{
+    background:transparent;
+    border:none;
+    font-size:22px;
+    color:white;
+    cursor:pointer;
+}
+
+.menu_items{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:14px;
+    margin-bottom:18px;
+    border-radius:12px;
+    background:#9d73c0b5;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+
+.active{
+    background:white;
+    color:#9682ed;
+}
+
+.main{
+    flex:1;
+    padding:18px;
+    margin-left:-8px;
+    overflow-y:auto;
+}
+
+.welcome-card{
+    background:linear-gradient(to right,#9682ed,#b79cff);
+    color:white;
+    padding:28px;
+    border-radius:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+    margin-top:8px;
+    position:relative;
+    left:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.welcome-text h2{
+    font-size:34px;
+    margin-bottom:8px;
+}
+
+.welcome-text p{
+    font-size:17px;
+}
+
+.subject-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+    position:relative;
+    top:-4px;
+}
+
+.subject-card{
+    background:white;
+    border-radius:22px;
+    padding:22px;
+    box-shadow:0 5px 12px rgba(0,0,0,0.08);
+    transition:0.3s;
+    position:relative;
+}
+
+
+.subject-card:hover{
+    transform:translateY(-4px);
+}
+
+.subject-card h3{
+    margin-top:12px;
+    margin-bottom:10px;
+    color:#5b4ea3;
+}
+
+.subject-card p{
+    color:gray;
+    margin-bottom:18px;
+    font-size:14px;
+}
+
+.subject-icon{
+    font-size:42px;
+}
+
+.button{
+    width:100%;
+    padding:11px;
+    border:none;
+    border-radius:12px;
+    background:#9682ed;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:15px;
+}
+
+.button:hover{
+    background:#7a63de;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <div class="sidebar-header">
+            <h2>STUDY BUDDY</h2>
+
+            <div class="x_button">
+                <button>☰</button>
+            </div>
+        </div>
+
+        <div class="menu_items">
+            <div class="icon">🏠</div>
+            <span>Home</span>
+        </div>
+
+        <div class="menu_items active">
+            <div class="icon">📚</div>
+            <span>Study Resources</span>
+        </div>
+
+        <div class="menu_items">
+            <div class="icon">🔄</div>
+            <span>Quiz and Revision</span>
+        </div>
+
+        <div class="menu_items">
+            <div class="icon">📅</div>
+            <span>Calendar</span>
+        </div>
+
+        <div class="menu_items">
+            <div class="icon">⚙️</div>
+            <span>Settings</span>
+        </div>
+
+    </div>
+
+    <div class="main">
+
+        <div class="welcome-card">
+
+            <div class="welcome-text">
+                <h2>Welcome Back 👋</h2>
+                <p>Continue your learning journey today!</p>
+            </div>
+
+        </div>
+
+        <div class="subject-grid">
+            <div class="subject-card">
+                <div class="subject-icon">➗</div>
+                <h3>Mathematics</h3>
+                <p>Notes, formulas, exercises and tutorials for math.</p>
+                <button class="button">Open Resources</button>
+            </div>
+
+            <div class="subject-card">
+                <div class="subject-icon">🧪</div>
+                <h3>Science</h3>
+                <p>Physics, chemistry and biology learning materials.</p>
+                <button class="button">Open Resources</button>
+            </div>
+
+            <div class="subject-card">
+                <div class="subject-icon">💻</div>
+                <h3>Programming</h3>
+                <p>Coding tutorials, projects and programming notes.</p>
+                <button class="button">Open Resources</button>
+            </div>
+
+            <div class="subject-card">
+                <div class="subject-icon">📖</div>
+                <h3>English</h3>
+                <p>Grammar notes, essays and vocabulary practice.</p>
+                <button class="button">Open Resources</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
