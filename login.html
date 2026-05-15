@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Study Buddy Login</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:radial-gradient(#8E7CFF,#C38FFF);
+    overflow:hidden;
+}
+
+.login-container{
+    width:400px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:30px;
+    padding:45px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.2);
+    position:relative;
+    z-index:1;
+}
+
+.login-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.login-title h1{
+    color:white;
+    font-size:40px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.login-title p{
+    color:#f3f3f3;
+    font-size:15px;
+}
+
+.input-group{
+    margin-bottom:25px;
+}
+
+.input-group label{
+    color:white;
+    font-size:14px;
+    display:block;
+    margin-bottom:8px;
+}
+
+.input-group input{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:15px;
+    outline:none;
+    font-size:15px;
+    background:rgba(255,255,255,0.9);
+    transition:0.3s;
+}
+
+.input-group input:focus{
+    box-shadow:0 0 15px rgba(255,255,255,0.4);
+}
+
+
+.login-btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:15px;
+    background:white;
+    color:#7A5FFF;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.login-btn:hover{
+    background:#ece8ff;
+}
+
+.bottom-text{
+    text-align:center;
+    margin-top:25px;
+    color:white;
+    font-size:14px;
+}
+
+.bottom-text a{
+    color:white;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.bottom-text a:hover{
+    text-decoration:underline;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <div class="login-title">
+        <h1>Study Buddy</h1>
+        <p>Welcome back! Login to continue studying.</p>
+    </div>
+
+    <form>
+
+        <div class="input-group">
+            <label>Email</label>
+            <input type="email" placeholder="Enter your email">
+        </div>
+
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" placeholder="Enter your password">
+        </div>
+
+        <button class="login-btn">
+            Login
+        </button>
+
+    </form>
+
+    <div class="bottom-text">
+        Don't have an account?
+        <a href="#">Sign Up</a>
+    </div>
+
+</div>
+
+</body>
+</html>
