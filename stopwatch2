@@ -1,0 +1,61 @@
+import tkinter as tk
+
+# --- Stopwatch Logic ---
+running = False
+elapsed_seconds = 0
+
+def start():
+    global running
+    if not running:
+        running = True
+        update_time()
+
+def pause():
+    global running
+    running = False
+
+def reset():
+    global running, elapsed_seconds
+    running = False
+    elapsed_seconds = 0
+    time_label.config(text="00:00:00")
+
+def update_time():
+    global elapsed_seconds, running
+
+    if running:
+        elapsed_seconds += 1
+
+        hours = elapsed_seconds // 3600
+        minutes = (elapsed_seconds % 3600) // 60
+        seconds = elapsed_seconds % 60
+
+        time_label.config(text=f"{hours:02d}:{minutes:02d}:{seconds:02d}")
+
+        root.after(1000, update_time)
+
+# --- UI ---
+root = tk.Tk()
+root.title("Stopwatch")
+root.geometry("320x250")
+root.resizable(False, False)
+
+# Display
+time_label = tk.Label(root, text="00:00:00", font=("Helvetica", 36))
+time_label.pack(pady=20)
+
+# Buttons
+frame = tk.Frame(root)
+frame.pack(pady=10)
+
+start_btn = tk.Button(frame, text="Start", width=8, command=start)
+start_btn.grid(row=0, column=0, padx=5)
+
+pause_btn = tk.Button(frame, text="Pause", width=8, command=pause)
+pause_btn.grid(row=0, column=1, padx=5)
+
+reset_btn = tk.Button(frame, text="Reset", width=8, command=reset)
+reset_btn.grid(row=0, column=2, padx=5)
+
+# Run app
+root.mainloop()
