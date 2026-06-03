@@ -10,10 +10,6 @@ calendar.setfirstweekday(calendar.SUNDAY)
 # =========================
 # Reminder Storage
 # =========================
-# Format:
-# reminders["2026-05-13"] = [
-#     ("10:00", "11:00", "Math Class", "Class")
-# ]
 reminders = {}
 
 COLOR_MAP = {
@@ -54,7 +50,7 @@ class CalendarApp:
 
         self.root.title("Smart Calendar")
 
-        self.root.geometry("760x650")
+        self.root.geometry("850x700")
 
         self.root.configure(bg="#1e1e1e")
 
@@ -182,18 +178,96 @@ class CalendarApp:
             fg="white"
         ).pack(pady=5)
 
-        # Reminder List
-        self.reminder_list = tk.Listbox(
+        # =========================
+        # Reminder Display Area
+        # =========================
+        list_frame = tk.Frame(
             self.reminder_frame,
-            bg="#1e1e1e",
-            fg="white",
-            height=6
+            bg="#2b2b2b"
         )
 
-        self.reminder_list.pack(
-            fill="x",
+        list_frame.pack(
+            fill="both",
+            expand=True,
             padx=10,
             pady=5
+        )
+
+        # Make BOTH columns equal width
+        list_frame.grid_columnconfigure(0, weight=1)
+        list_frame.grid_columnconfigure(1, weight=1)
+
+        # Left = Time List
+        self.time_list = tk.Listbox(
+            list_frame,
+            bg="#1e1e1e",
+            fg="white",
+            font=("Segoe UI", 10),
+            activestyle="none",
+            relief="flat",
+            bd=0,
+            height=8
+        )
+
+        self.time_list.grid(
+            row=0,
+            column=0,
+            sticky="nsew"
+        )
+
+        # Right = Details List
+        self.detail_list = tk.Listbox(
+            list_frame,
+            bg="#1e1e1e",
+            fg="white",
+            font=("Segoe UI", 10),
+            activestyle="none",
+            relief="flat",
+            bd=0,
+            height=8
+        )
+
+        self.detail_list.grid(
+            row=0,
+            column=1,
+            sticky="nsew",
+            padx=(5, 0)
+        )
+
+        # Shared Scrollbar
+        scrollbar = tk.Scrollbar(
+            list_frame,
+            orient="vertical"
+        )
+
+        scrollbar.grid(
+            row=0,
+            column=2,
+            sticky="ns"
+        )
+
+        # Connect Scrollbars
+        self.time_list.config(
+            yscrollcommand=scrollbar.set
+        )
+
+        self.detail_list.config(
+            yscrollcommand=scrollbar.set
+        )
+
+        scrollbar.config(
+            command=self.sync_scroll
+        )
+
+        # Sync Selection
+        self.time_list.bind(
+            "<<ListboxSelect>>",
+            self.sync_selection
+        )
+
+        self.detail_list.bind(
+            "<<ListboxSelect>>",
+            self.sync_selection
         )
 
         # =========================
@@ -204,13 +278,14 @@ class CalendarApp:
             bg="#2b2b2b"
         )
 
-        action_frame.pack()
+        action_frame.pack(pady=5)
 
         tk.Button(
             action_frame,
             text="Edit",
             bg="#2196F3",
             fg="white",
+            width=10,
             command=self.edit_reminder
         ).pack(side=tk.LEFT, padx=5)
 
@@ -219,7 +294,17 @@ class CalendarApp:
             text="Delete",
             bg="#f44336",
             fg="white",
+            width=10,
             command=self.delete_reminder
+        ).pack(side=tk.LEFT, padx=5)
+
+        tk.Button(
+            action_frame,
+            text="Clear All",
+            bg="#9C27B0",
+            fg="white",
+            width=10,
+            command=self.clear_day_reminders
         ).pack(side=tk.LEFT, padx=5)
 
         # =========================
@@ -268,7 +353,7 @@ class CalendarApp:
         # Reminder Text
         self.text_entry = tk.Entry(
             input_frame,
-            width=22
+            width=25
         )
 
         self.text_entry.pack(
@@ -308,6 +393,34 @@ class CalendarApp:
             target=self.check_notifications,
             daemon=True
         ).start()
+
+    # =========================
+    # Sync Scroll
+    # =========================
+    def sync_scroll(self, *args):
+
+        self.time_list.yview(*args)
+        self.detail_list.yview(*args)
+
+    # =========================
+    # Sync Selection
+    # =========================
+    def sync_selection(self, event):
+
+        widget = event.widget
+
+        selection = widget.curselection()
+
+        if not selection:
+            return
+
+        index = selection[0]
+
+        self.time_list.selection_clear(0, tk.END)
+        self.detail_list.selection_clear(0, tk.END)
+
+        self.time_list.selection_set(index)
+        self.detail_list.selection_set(index)
 
     # =========================
     # Reminder Dots
@@ -398,7 +511,7 @@ class CalendarApp:
                         f"{day:02d}"
                     )
 
-                    # Selected Day = Red
+                    # Selected Day
                     if date_key == self.selected_day:
                         base_color = "#E53935"
                     else:
@@ -511,7 +624,8 @@ class CalendarApp:
     # =========================
     def update_reminders(self):
 
-        self.reminder_list.delete(0, tk.END)
+        self.time_list.delete(0, tk.END)
+        self.detail_list.delete(0, tk.END)
 
         if self.selected_day in reminders:
 
@@ -531,14 +645,29 @@ class CalendarApp:
                 typ
             ) in enumerate(self.sorted_reminders):
 
-                self.reminder_list.insert(
+                # Left Side
+                self.time_list.insert(
                     tk.END,
-                    f"{start} - {end} | {text} ({typ})"
+                    f"{start} - {end}"
                 )
 
-                self.reminder_list.itemconfig(
+                # Right Side
+                self.detail_list.insert(
+                    tk.END,
+                    f"{text} ({typ})"
+                )
+
+                color = COLOR_MAP.get(typ)
+
+                self.time_list.itemconfig(
                     i,
-                    bg=COLOR_MAP.get(typ),
+                    bg=color,
+                    fg="black"
+                )
+
+                self.detail_list.itemconfig(
+                    i,
+                    bg=color,
                     fg="black"
                 )
 
@@ -652,7 +781,7 @@ class CalendarApp:
     # =========================
     def delete_reminder(self):
 
-        selection = self.reminder_list.curselection()
+        selection = self.time_list.curselection()
 
         if not selection:
             return
@@ -667,11 +796,34 @@ class CalendarApp:
         self.draw_calendar()
 
     # =========================
+    # Clear All Reminders
+    # =========================
+    def clear_day_reminders(self):
+
+        if not self.selected_day:
+            return
+
+        if self.selected_day not in reminders:
+            return
+
+        confirm = messagebox.askyesno(
+            "Clear Reminders",
+            "Delete ALL reminders for this day?"
+        )
+
+        if confirm:
+
+            reminders[self.selected_day] = []
+
+            self.update_reminders()
+            self.draw_calendar()
+
+    # =========================
     # Edit Reminder
     # =========================
     def edit_reminder(self):
 
-        selection = self.reminder_list.curselection()
+        selection = self.time_list.curselection()
 
         if not selection:
             return
