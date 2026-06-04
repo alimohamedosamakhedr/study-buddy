@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Study Buddy - Study Resources</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Buddy - Quiz & Revision</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -22,8 +22,6 @@ body{
     padding:20px;
 }
 
-/* Layout */
-
 .container{
     display:flex;
     gap:25px;
@@ -36,8 +34,8 @@ body{
 .sidebar{
     width:300px;
     min-height:92vh;
-    border-radius:30px;
     padding:25px;
+    border-radius:30px;
     background:rgba(255,255,255,0.15);
     backdrop-filter:blur(15px);
     border:1px solid rgba(255,255,255,0.2);
@@ -66,11 +64,6 @@ body{
     border-radius:12px;
     font-size:20px;
     cursor:pointer;
-    transition:0.3s;
-}
-
-.x_button button:hover{
-    background:rgba(255,255,255,0.3);
 }
 
 /* Menu */
@@ -114,64 +107,45 @@ body{
     overflow-y:auto;
 }
 
-/* Welcome */
+/* Header */
 
-.welcome-card{
+.header-card{
     background:rgba(255,255,255,0.18);
     border-radius:25px;
     padding:30px;
     color:white;
     margin-bottom:25px;
-    border:1px solid rgba(255,255,255,0.2);
 }
 
-.welcome-text h2{
+.header-card h2{
     font-size:36px;
     margin-bottom:8px;
 }
 
-.welcome-text p{
-    font-size:17px;
-    color:#f3f3f3;
-}
+/* Grid */
 
-/* Subject cards */
-
-.subject-grid{
+.quiz-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
     gap:20px;
 }
 
-.subject-card{
+.quiz-card{
     background:rgba(255,255,255,0.18);
     border-radius:25px;
     padding:25px;
     color:white;
-    border:1px solid rgba(255,255,255,0.2);
     transition:0.3s;
 }
 
-.subject-card:hover{
+.quiz-card:hover{
     transform:translateY(-6px);
     background:rgba(255,255,255,0.25);
 }
 
-.subject-icon{
+.quiz-icon{
     font-size:45px;
     margin-bottom:15px;
-}
-
-.subject-card h3{
-    margin-bottom:10px;
-    font-size:22px;
-}
-
-.subject-card p{
-    font-size:14px;
-    color:#f5f5f5;
-    margin-bottom:18px;
-    line-height:1.5;
 }
 
 /* Buttons */
@@ -183,7 +157,6 @@ body{
     border-radius:15px;
     background:white;
     color:#7A5FFF;
-    font-size:15px;
     font-weight:600;
     cursor:pointer;
     transition:0.3s;
@@ -191,6 +164,32 @@ body{
 
 .button:hover{
     background:#eee7ff;
+}
+
+/* Progress */
+
+.progress-section{
+    margin-top:25px;
+    background:rgba(255,255,255,0.18);
+    padding:25px;
+    border-radius:25px;
+    color:white;
+}
+
+.progress-bar{
+    width:100%;
+    height:18px;
+    background:rgba(255,255,255,0.25);
+    border-radius:20px;
+    margin-top:15px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    width:70%;
+    height:100%;
+    background:white;
+    border-radius:20px;
 }
 
 </style>
@@ -213,28 +212,23 @@ body{
         </div>
 
         <a href="main_page.html" class="menu_items">
-            <div>🏠</div>
-            <span>Home</span>
+            🏠 <span>Home</span>
         </a>
 
-        <a href="Study_resources.html" class="menu_items active">
-            <div>📚</div>
-            <span>Study Resources</span>
+        <a href="Study_resources.html" class="menu_items">
+            📚 <span>Study Resources</span>
         </a>
 
-        <a href="Quiz and Revision.html" class="menu_items">
-            <div>📝</div>
-            <span>Quiz & Revision</span>
+        <a href="Quiz and Revision.html" class="menu_items active">
+            📝 <span>Quiz & Revision</span>
         </a>
 
         <a href="Calender.html" class="menu_items">
-            <div>📅</div>
-            <span>Calendar</span>
+            📅 <span>Calendar</span>
         </a>
 
         <a href="setting.html" class="menu_items">
-            <div>⚙️</div>
-            <span>Settings</span>
+            ⚙️ <span>Settings</span>
         </a>
 
     </div>
@@ -243,57 +237,66 @@ body{
 
     <div class="main">
 
-        <div class="welcome-card">
+        <div class="header-card">
+            <h2>Quiz & Revision</h2>
+            <p>Test your knowledge and track your progress.</p>
+        </div>
 
-            <div class="welcome-text">
-                <h2>Study Resources</h2>
-                <p>Continue learning and stay ahead today.</p>
+        <div class="quiz-grid">
+
+            <div class="quiz-card">
+                <div class="quiz-icon">⚡</div>
+                <h3>Quick Quiz</h3>
+                <p>Answer timed questions and test yourself fast.</p>
+
+                <button class="button"
+                onclick="window.location.href='quick_quiz.html'">
+                    Start Quiz
+                </button>
+            </div>
+
+            <div class="quiz-card">
+                <div class="quiz-icon">🃏</div>
+                <h3>Flashcards</h3>
+                <p>Review important concepts and memorise faster.</p>
+
+                <button class="button"
+                onclick="window.location.href='flashcards.html'">
+                    Open Flashcards
+                </button>
+            </div>
+
+            <div class="quiz-card">
+                <div class="quiz-icon">📄</div>
+                <h3>Past Papers</h3>
+                <p>Practice with previous exam questions.</p>
+
+                <button class="button"
+                onclick="window.location.href='past_papers.html'">
+                    View Papers
+                </button>
+            </div>
+
+            <div class="quiz-card">
+                <div class="quiz-icon">📊</div>
+                <h3>Progress</h3>
+                <p>Track completed quizzes and improvement.</p>
+
+                <button class="button"
+                onclick="window.location.href='progress.html'">
+                    View Progress
+                </button>
             </div>
 
         </div>
 
-        <div class="subject-grid">
+        <div class="progress-section">
+            <h3>This Week's Progress</h3>
+            <p>You completed 7 out of 10 revision goals.</p>
 
-            <div class="subject-card">
-                <div class="subject-icon">➗</div>
-                <h3>Mathematics</h3>
-                <p>Notes, formulas, tutorials and practice exercises.</p>
-                <button class="button"
-                onclick="window.location.href='math.html'">
-                Open
-                </button>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
             </div>
-
-            <div class="subject-card">
-                <div class="subject-icon">🧪</div>
-                <h3>Science</h3>
-                <p>Physics, chemistry and biology study materials.</p>
-                <button class="button"
-                onclick="window.location.href='science.html'">
-                Open
-                </button>
-            </div>
-
-            <div class="subject-card">
-                <div class="subject-icon">💻</div>
-                <h3>Programming</h3>
-                <p>Projects, coding tutorials and useful references.</p>
-                <button class="button"
-                onclick="window.location.href='programming.html'">
-                Open
-                </button>
-            </div>
-
-            <div class="subject-card">
-                <div class="subject-icon">📖</div>
-                <h3>English</h3>
-                <p>Essays, grammar notes and vocabulary practice.</p>
-                <button class="button"
-                onclick="window.location.href='english.html'">
-                Open
-                </button>
-            </div>
-
         </div>
 
     </div>

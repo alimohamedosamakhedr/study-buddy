@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Study Buddy - Calendar</title>
+<title>Study Buddy - Settings</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -30,6 +30,7 @@ body{
 }
 
 /* Sidebar */
+
 .sidebar{
     width:300px;
     min-height:92vh;
@@ -42,7 +43,25 @@ body{
     color:white;
 }
 
-/* IMPORTANT: make <a> behave like div */
+.sidebar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+}
+
+.x_button button{
+    background:rgba(255,255,255,0.2);
+    border:none;
+    color:white;
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    font-size:20px;
+    cursor:pointer;
+}
+
+/* FIX APPLIED HERE */
 .menu_items{
     display:flex;
     align-items:center;
@@ -53,8 +72,9 @@ body{
     background:rgba(255,255,255,0.12);
     cursor:pointer;
     transition:0.3s;
-    text-decoration:none;
-    color:white;
+
+    text-decoration:none;   /* removes underline */
+    color:white;            /* keeps text white */
 }
 
 .menu_items:hover{
@@ -69,6 +89,7 @@ body{
 }
 
 /* Main */
+
 .main{
     flex:1;
     min-height:92vh;
@@ -80,24 +101,75 @@ body{
     box-shadow:0 10px 35px rgba(0,0,0,0.15);
 }
 
-/* Header */
-.header-card{
+/* Cards */
+
+.header-card,
+.settings-card{
     background:rgba(255,255,255,0.18);
     border-radius:25px;
-    padding:30px;
+    padding:25px;
     color:white;
-    margin-bottom:25px;
+    margin-bottom:20px;
     border:1px solid rgba(255,255,255,0.2);
 }
 
 .header-card h2{
-    font-size:36px;
+    font-size:34px;
     margin-bottom:8px;
 }
 
-.header-card p{
-    font-size:17px;
-    color:#f5f5f5;
+.setting-item{
+    margin-top:18px;
+}
+
+.setting-item label{
+    display:block;
+    margin-bottom:8px;
+    font-size:14px;
+}
+
+.setting-item select{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:14px;
+    background:rgba(255,255,255,0.9);
+}
+
+/* Buttons */
+
+.button{
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:15px;
+    background:white;
+    color:#7A5FFF;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.button:hover{
+    background:#eee7ff;
+}
+
+.logout-btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:15px;
+    background:#ff5b7f;
+    color:white;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.logout-btn:hover{
+    background:#ff416c;
 }
 
 </style>
@@ -110,8 +182,12 @@ body{
     <!-- Sidebar -->
     <div class="sidebar">
 
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:35px;">
-            <h2 style="color:white;">STUDY BUDDY</h2>
+        <div class="sidebar-header">
+            <h2>STUDY BUDDY</h2>
+
+            <div class="x_button">
+                <button>☰</button>
+            </div>
         </div>
 
         <a href="main_page.html" class="menu_items">
@@ -126,11 +202,11 @@ body{
             📝 <span>Quiz & Revision</span>
         </a>
 
-        <a href="Calender.html" class="menu_items active">
+        <a href="Calender.html" class="menu_items">
             📅 <span>Calendar</span>
         </a>
 
-        <a href="setting.html" class="menu_items">
+        <a href="setting.html" class="menu_items active">
             ⚙️ <span>Settings</span>
         </a>
 
@@ -140,8 +216,33 @@ body{
     <div class="main">
 
         <div class="header-card">
-            <h2>Calendar Planning</h2>
-            <p>Plan your week, manage deadlines and stay organised.</p>
+            <h2>Settings ⚙️</h2>
+            <p>Manage your basic preferences and account.</p>
+        </div>
+
+        <div class="settings-card">
+            <h3>Preferences</h3>
+
+            <div class="setting-item">
+                <label>Reminder Notifications</label>
+                <select>
+                    <option>Enabled</option>
+                    <option>Disabled</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="settings-card">
+            <h3>Account</h3>
+            <p style="margin:15px 0;">
+                Log out from your Study Buddy account.
+            </p>
+
+            <button class="logout-btn">
+                Log Out
+            </button>
+
         </div>
 
     </div>
