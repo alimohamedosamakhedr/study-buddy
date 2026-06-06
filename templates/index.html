@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Quiz</title>
+
+    <style>
+           body { font-family: Arial; max-width: 600px; margin: 80px auto; }
+    </style>
+</head>
+<body>
+    <p>Question {{ num }} of {{ total }}</p>
+    <h2>{{ question }}</h2>
+    <form method="POST" action="/answer">
+        {% for letter, opt in opts.items() %}
+        <button type="submit" name="choice" value="{{ letter }}">
+            {{ letter }}. {{ opt }}
+        </button>
+        {% endfor %}
+    </form>
+</body>
+</html>
