@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Study Buddy - Study Resources</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:radial-gradient(circle at top,#8E7CFF,#C38FFF);
+    padding:20px;
+}
+
+/* Layout */
+
+.container{
+    display:flex;
+    gap:25px;
+    max-width:1450px;
+    margin:auto;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width:300px;
+    min-height:92vh;
+    border-radius:30px;
+    padding:25px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 10px 35px rgba(0,0,0,0.15);
+    color:white;
+}
+
+.sidebar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+}
+
+.sidebar-header h2{
+    font-size:24px;
+    font-weight:700;
+}
+
+.x_button button{
+    background:rgba(255,255,255,0.2);
+    border:none;
+    color:white;
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    font-size:20px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.x_button button:hover{
+    background:rgba(255,255,255,0.3);
+}
+
+/* Menu */
+
+.menu_items{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:15px;
+    margin-bottom:18px;
+    border-radius:18px;
+    background:rgba(255,255,255,0.12);
+    cursor:pointer;
+    transition:0.3s;
+    text-decoration:none;
+    color:white;
+}
+
+.menu_items:hover{
+    background:rgba(255,255,255,0.22);
+    transform:translateX(5px);
+}
+
+.active{
+    background:white;
+    color:#7A5FFF;
+    font-weight:600;
+}
+
+/* Main */
+
+.main{
+    flex:1;
+    min-height:92vh;
+    padding:30px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 10px 35px rgba(0,0,0,0.15);
+    overflow-y:auto;
+}
+
+/* Welcome */
+
+.welcome-card{
+    background:rgba(255,255,255,0.18);
+    border-radius:25px;
+    padding:30px;
+    color:white;
+    margin-bottom:25px;
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.welcome-text h2{
+    font-size:36px;
+    margin-bottom:8px;
+}
+
+.welcome-text p{
+    font-size:17px;
+    color:#f3f3f3;
+}
+
+/* Subject cards */
+
+.subject-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+}
+
+.subject-card{
+    background:rgba(255,255,255,0.18);
+    border-radius:25px;
+    padding:25px;
+    color:white;
+    border:1px solid rgba(255,255,255,0.2);
+    transition:0.3s;
+}
+
+.subject-card:hover{
+    transform:translateY(-6px);
+    background:rgba(255,255,255,0.25);
+}
+
+.subject-icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.subject-card h3{
+    margin-bottom:10px;
+    font-size:22px;
+}
+
+.subject-card p{
+    font-size:14px;
+    color:#f5f5f5;
+    margin-bottom:18px;
+    line-height:1.5;
+}
+
+/* Buttons */
+
+.button{
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:15px;
+    background:white;
+    color:#7A5FFF;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.button:hover{
+    background:#eee7ff;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <div class="sidebar-header">
+            <h2>STUDY BUDDY</h2>
+
+            <div class="x_button">
+                <button>☰</button>
+            </div>
+        </div>
+
+        <a href="main_page.html" class="menu_items">
+            <div>🏠</div>
+            <span>Home</span>
+        </a>
+
+        <a href="Study_resources.html" class="menu_items active">
+            <div>📚</div>
+            <span>Study Resources</span>
+        </a>
+
+        <a href="Quiz and Revision.html" class="menu_items">
+            <div>📝</div>
+            <span>Quiz & Revision</span>
+        </a>
+
+        <a href="Calender.html" class="menu_items">
+            <div>📅</div>
+            <span>Calendar</span>
+        </a>
+
+        <a href="setting.html" class="menu_items">
+            <div>⚙️</div>
+            <span>Settings</span>
+        </a>
+
+    </div>
+
+    <!-- Main -->
+
+    <div class="main">
+
+        <div class="welcome-card">
+
+            <div class="welcome-text">
+                <h2>Study Resources</h2>
+                <p>Continue learning and stay ahead today.</p>
+            </div>
+
+        </div>
+
+        <div class="subject-grid">
+
+            <div class="subject-card">
+                <div class="subject-icon">➗</div>
+                <h3>Mathematics</h3>
+                <p>Notes, formulas, tutorials and practice exercises.</p>
+                <button class="button"
+                onclick="window.location.href='math.html'">
+                Open
+                </button>
+            </div>
+
+            <div class="subject-card">
+                <div class="subject-icon">🧪</div>
+                <h3>Science</h3>
+                <p>Physics, chemistry and biology study materials.</p>
+                <button class="button"
+                onclick="window.location.href='science.html'">
+                Open
+                </button>
+            </div>
+
+            <div class="subject-card">
+                <div class="subject-icon">💻</div>
+                <h3>Programming</h3>
+                <p>Projects, coding tutorials and useful references.</p>
+                <button class="button"
+                onclick="window.location.href='programming.html'">
+                Open
+                </button>
+            </div>
+
+            <div class="subject-card">
+                <div class="subject-icon">📖</div>
+                <h3>English</h3>
+                <p>Essays, grammar notes and vocabulary practice.</p>
+                <button class="button"
+                onclick="window.location.href='english.html'">
+                Open
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
