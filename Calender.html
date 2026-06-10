@@ -4,160 +4,399 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Study Buddy - Calendar</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-body{
-    min-height:100vh;
-    background:radial-gradient(circle at top,#8E7CFF,#C38FFF);
-    padding:20px;
-}
-
-.container{
-    display:flex;
-    gap:25px;
-    max-width:1450px;
-    margin:auto;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{min-height:100vh;background:radial-gradient(circle at top,#8E7CFF,#C38FFF);padding:20px;}
+.container{display:flex;gap:25px;max-width:1450px;margin:auto;}
 
 /* Sidebar */
-.sidebar{
-    width:300px;
-    min-height:92vh;
-    padding:25px;
-    border-radius:30px;
-    background:rgba(255,255,255,0.15);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,0.2);
-    box-shadow:0 10px 35px rgba(0,0,0,0.15);
-    color:white;
-}
-
-/* IMPORTANT: make <a> behave like div */
-.menu_items{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:15px;
-    margin-bottom:18px;
-    border-radius:18px;
-    background:rgba(255,255,255,0.12);
-    cursor:pointer;
-    transition:0.3s;
-    text-decoration:none;
-    color:white;
-}
-
-.menu_items:hover{
-    background:rgba(255,255,255,0.22);
-    transform:translateX(5px);
-}
-
-.active{
-    background:white;
-    color:#7A5FFF;
-    font-weight:600;
-}
+.sidebar{width:300px;min-height:92vh;padding:25px;border-radius:30px;background:rgba(255,255,255,0.15);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,0.2);box-shadow:0 10px 35px rgba(0,0,0,0.15);color:white;}
+.menu_items{display:flex;align-items:center;gap:12px;padding:15px;margin-bottom:18px;border-radius:18px;background:rgba(255,255,255,0.12);cursor:pointer;transition:0.3s;text-decoration:none;color:white;}
+.menu_items:hover{background:rgba(255,255,255,0.22);transform:translateX(5px);}
+.active{background:white;color:#7A5FFF;font-weight:600;}
 
 /* Main */
-.main{
-    flex:1;
-    min-height:92vh;
-    padding:30px;
-    border-radius:30px;
-    background:rgba(255,255,255,0.15);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,0.2);
-    box-shadow:0 10px 35px rgba(0,0,0,0.15);
-}
+.main{flex:1;min-height:92vh;padding:30px;border-radius:30px;background:rgba(255,255,255,0.15);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,0.2);box-shadow:0 10px 35px rgba(0,0,0,0.15);}
 
 /* Header */
-.header-card{
-    background:rgba(255,255,255,0.18);
-    border-radius:25px;
-    padding:30px;
-    color:white;
-    margin-bottom:25px;
-    border:1px solid rgba(255,255,255,0.2);
-}
+.header-card{background:rgba(255,255,255,0.18);border-radius:25px;padding:30px;color:white;margin-bottom:25px;border:1px solid rgba(255,255,255,0.2);}
+.header-card h2{font-size:36px;margin-bottom:8px;}
+.header-card p{font-size:17px;color:#f5f5f5;}
 
-.header-card h2{
-    font-size:36px;
-    margin-bottom:8px;
-}
+/* Calendar Widget */
+.calendar-widget{background:rgba(255,255,255,0.12);border-radius:25px;padding:25px;border:1px solid rgba(255,255,255,0.2);}
 
-.header-card p{
-    font-size:17px;
-    color:#f5f5f5;
-}
+/* Nav Row */
+.cal-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+.cal-nav h3{color:white;font-size:20px;font-weight:600;}
+.nav-btn{background:rgba(255,255,255,0.2);border:none;color:white;font-size:18px;font-weight:bold;width:38px;height:38px;border-radius:12px;cursor:pointer;transition:0.2s;}
+.nav-btn:hover{background:rgba(255,255,255,0.35);}
 
+/* Day headers */
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;}
+.day-header{text-align:center;color:rgba(255,255,255,0.7);font-size:12px;font-weight:600;padding:6px 0;text-transform:uppercase;letter-spacing:0.5px;}
+.day-cell{background:rgba(255,255,255,0.1);border-radius:12px;padding:6px 4px;min-height:70px;cursor:pointer;transition:0.2s;border:2px solid transparent;position:relative;}
+.day-cell:hover{background:rgba(255,255,255,0.2);}
+.day-cell.empty{background:transparent;cursor:default;pointer-events:none;}
+.day-cell.today{border-color:rgba(255,255,255,0.5);}
+.day-cell.selected{background:white;border-color:white;}
+.day-cell.selected .day-num{color:#7A5FFF;}
+.day-num{color:white;font-size:13px;font-weight:500;margin-bottom:4px;}
+.day-cell.selected .day-num{color:#7A5FFF;}
+.dot-row{display:flex;flex-wrap:wrap;gap:2px;}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block;}
+.dot-more{font-size:9px;color:rgba(255,255,255,0.8);font-weight:600;line-height:7px;}
+.day-cell.selected .dot-more{color:#7A5FFF;}
+
+/* Reminders Panel */
+.reminders-panel{margin-top:20px;background:rgba(255,255,255,0.1);border-radius:20px;padding:20px;border:1px solid rgba(255,255,255,0.15);}
+.reminders-panel h4{color:white;font-size:15px;font-weight:600;margin-bottom:12px;}
+.reminder-list{max-height:180px;overflow-y:auto;margin-bottom:12px;}
+.reminder-list::-webkit-scrollbar{width:4px;}
+.reminder-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.3);border-radius:4px;}
+.reminder-item{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-radius:10px;margin-bottom:6px;cursor:pointer;transition:0.2s;}
+.reminder-item:hover{filter:brightness(1.15);}
+.reminder-item.selected-item{outline:2px solid white;}
+.reminder-info{flex:1;}
+.reminder-time{font-size:11px;font-weight:600;color:rgba(0,0,0,0.7);}
+.reminder-text{font-size:12px;color:rgba(0,0,0,0.85);font-weight:500;}
+.reminder-type-badge{font-size:10px;font-weight:700;color:rgba(0,0,0,0.6);background:rgba(0,0,0,0.1);border-radius:6px;padding:2px 6px;}
+
+/* Action buttons */
+.action-row{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.act-btn{padding:7px 16px;border:none;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;transition:0.2s;}
+.act-btn:hover{filter:brightness(1.1);transform:translateY(-1px);}
+.btn-edit{background:#2196F3;color:white;}
+.btn-delete{background:#f44336;color:white;}
+.btn-clear{background:#9C27B0;color:white;}
+
+/* Input Row */
+.input-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.input-row input, .input-row select{padding:8px 10px;border-radius:10px;border:none;background:rgba(255,255,255,0.25);color:white;font-size:12px;outline:none;font-family:'Poppins',sans-serif;}
+.input-row input::placeholder{color:rgba(255,255,255,0.6);}
+.input-row select option{background:#7A5FFF;color:white;}
+.add-btn{padding:8px 18px;border:none;border-radius:10px;background:white;color:#7A5FFF;font-weight:700;font-size:12px;cursor:pointer;transition:0.2s;}
+.add-btn:hover{background:#f0edff;}
+.empty-msg{color:rgba(255,255,255,0.55);font-size:13px;text-align:center;padding:20px 0;}
+
+/* Legend */
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px;}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(255,255,255,0.8);font-weight:500;}
+.legend-dot{width:10px;height:10px;border-radius:50%;}
 </style>
 </head>
-
 <body>
-
 <div class="container">
 
-    <!-- Sidebar -->
-    <div class="sidebar">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:35px;">
+      <h2 style="color:white;">STUDY BUDDY</h2>
+    </div>
+    <a href="main_page.html" class="menu_items">🏠 <span>Home</span></a>
+    <a href="Study_resources.html" class="menu_items">📚 <span>Study Resources</span></a>
+    <a href="Quiz and Revision.html" class="menu_items">📝 <span>Quiz &amp; Revision</span></a>
+    <a href="Calender.html" class="menu_items active">📅 <span>Calendar</span></a>
+    <a href="setting.html" class="menu_items">⚙️ <span>Settings</span></a>
+  </div>
 
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:35px;">
-            <h2 style="color:white;">STUDY BUDDY</h2>
-        </div>
+  <!-- Main -->
+  <div class="main">
 
-        <a href="main_page.html" class="menu_items">
-            🏠 <span>Home</span>
-        </a>
-
-        <a href="Study_resources.html" class="menu_items">
-            📚 <span>Study Resources</span>
-        </a>
-
-        <a href="Quiz and Revision.html" class="menu_items">
-            📝 <span>Quiz & Revision</span>
-        </a>
-
-        <a href="Calender.html" class="menu_items active">
-            📅 <span>Calendar</span>
-        </a>
-
-        <a href="setting.html" class="menu_items">
-            ⚙️ <span>Settings</span>
-        </a>
-
+    <div class="header-card">
+      <h2>Calendar Planning</h2>
+      <p>Plan your week, manage deadlines and stay organised.</p>
     </div>
 
-    <!-- Main -->
-    <div class="main">
+    <!-- Calendar Widget -->
+    <div class="calendar-widget">
 
-        <div class="header-card">
-            <h2>Calendar Planning</h2>
-            <p>Plan your week, manage deadlines and stay organised.</p>
+      <!-- Legend -->
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#4FC3F7"></div>Class</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#EF5350"></div>Exam</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#66BB6A"></div>Assignment</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#FFD54F"></div>Other</div>
+      </div>
+
+      <!-- Month Nav -->
+      <div class="cal-nav">
+        <button class="nav-btn" onclick="changeMonth(-1)">&#10094;</button>
+        <h3 id="monthLabel"></h3>
+        <button class="nav-btn" onclick="changeMonth(1)">&#10095;</button>
+      </div>
+
+      <!-- Day Grid -->
+      <div class="cal-grid" id="calGrid">
+        <div class="day-header">Sun</div>
+        <div class="day-header">Mon</div>
+        <div class="day-header">Tue</div>
+        <div class="day-header">Wed</div>
+        <div class="day-header">Thu</div>
+        <div class="day-header">Fri</div>
+        <div class="day-header">Sat</div>
+      </div>
+
+      <!-- Reminders Panel -->
+      <div class="reminders-panel">
+        <h4 id="reminderTitle">Select a day to view reminders</h4>
+
+        <div class="reminder-list" id="reminderList">
+          <div class="empty-msg">Click any date above to get started.</div>
         </div>
 
-    </div>
+        <div class="action-row">
+          <button class="act-btn btn-edit" onclick="editReminder()">✏️ Edit</button>
+          <button class="act-btn btn-delete" onclick="deleteReminder()">🗑 Delete</button>
+          <button class="act-btn btn-clear" onclick="clearDay()">🧹 Clear All</button>
+        </div>
 
-</div>
+        <div class="input-row">
+          <input type="text" id="startTime" placeholder="Start  10:00" style="width:90px;">
+          <input type="text" id="endTime" placeholder="End  11:00" style="width:90px;">
+          <input type="text" id="eventText" placeholder="Event name…" style="flex:1;min-width:120px;">
+          <select id="eventType">
+            <option value="Class">Class</option>
+            <option value="Exam">Exam</option>
+            <option value="Assignment">Assignment</option>
+            <option value="Other">Other</option>
+          </select>
+          <button class="add-btn" onclick="addReminder()">+ Add</button>
+        </div>
+      </div>
 
-</body>
+    </div><!-- end calendar-widget -->
+  </div><!-- end main -->
+</div><!-- end container -->
+
 <script>
-    async function fetchData() {
-        try {
-            const response = await fetch('calander.py');
-            const data = await response.json();
-            console.log(data);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
+const COLOR_MAP = {
+  Class: "#4FC3F7",
+  Exam:  "#EF5350",
+  Assignment: "#66BB6A",
+  Other: "#FFD54F"
+};
+
+let reminders = JSON.parse(localStorage.getItem("sb_reminders") || "{}");
+let currentYear  = new Date().getFullYear();
+let currentMonth = new Date().getMonth(); // 0-indexed
+let selectedDay  = null;
+let selectedItemIndex = -1;
+
+function saveReminders() {
+  localStorage.setItem("sb_reminders", JSON.stringify(reminders));
+}
+
+function dateKey(y, m, d) {
+  return `${y}-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+}
+
+function changeMonth(dir) {
+  currentMonth += dir;
+  if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+  if (currentMonth > 11) { currentMonth = 0;  currentYear++; }
+  drawCalendar();
+}
+
+function drawCalendar() {
+  const months = ["January","February","March","April","May","June",
+                  "July","August","September","October","November","December"];
+  document.getElementById("monthLabel").textContent = `${months[currentMonth]} ${currentYear}`;
+
+  // Remove old day cells (keep 7 headers)
+  const grid = document.getElementById("calGrid");
+  const cells = grid.querySelectorAll(".day-cell, .empty");
+  cells.forEach(c => c.remove());
+
+  const today = new Date();
+  const firstDay = new Date(currentYear, currentMonth, 1).getDay(); // Sun=0
+  const daysInMonth = new Date(currentYear, currentMonth+1, 0).getDate();
+
+  // Empty leading cells
+  for (let i = 0; i < firstDay; i++) {
+    const e = document.createElement("div");
+    e.className = "day-cell empty";
+    grid.appendChild(e);
+  }
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const key = dateKey(currentYear, currentMonth, d);
+    const cell = document.createElement("div");
+    cell.className = "day-cell";
+
+    const isToday = (d === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear());
+    if (isToday)        cell.classList.add("today");
+    if (key === selectedDay) cell.classList.add("selected");
+
+    // Day number
+    const num = document.createElement("div");
+    num.className = "day-num";
+    num.textContent = d;
+    cell.appendChild(num);
+
+    // Dots
+    const dots = (reminders[key] || []).map(r => r[3]);
+    if (dots.length) {
+      const row = document.createElement("div");
+      row.className = "dot-row";
+      dots.slice(0, 6).forEach(type => {
+        const dot = document.createElement("span");
+        dot.className = "dot";
+        dot.style.background = COLOR_MAP[type] || "#ccc";
+        row.appendChild(dot);
+      });
+      if (dots.length > 6) {
+        const more = document.createElement("span");
+        more.className = "dot-more";
+        more.textContent = `+${dots.length - 6}`;
+        row.appendChild(more);
+      }
+      cell.appendChild(row);
     }
+
+    cell.addEventListener("click", () => selectDay(key));
+    grid.appendChild(cell);
+  }
+}
+
+function selectDay(key) {
+  selectedDay = key;
+  selectedItemIndex = -1;
+  drawCalendar();
+  renderReminders();
+}
+
+function renderReminders() {
+  if (!selectedDay) return;
+  const parts = selectedDay.split("-");
+  document.getElementById("reminderTitle").textContent =
+    `Reminders — ${parts[2]}/${parts[1]}/${parts[0]}`;
+
+  const list = document.getElementById("reminderList");
+  list.innerHTML = "";
+
+  const events = (reminders[selectedDay] || []).slice().sort((a,b) => a[0].localeCompare(b[0]));
+
+  if (!events.length) {
+    list.innerHTML = `<div class="empty-msg">No events yet. Add one below.</div>`;
+    return;
+  }
+
+  events.forEach((ev, i) => {
+    const item = document.createElement("div");
+    item.className = "reminder-item";
+    item.style.background = COLOR_MAP[ev[3]] || "#ccc";
+    if (i === selectedItemIndex) item.classList.add("selected-item");
+
+    item.innerHTML = `
+      <div class="reminder-info">
+        <div class="reminder-time">${ev[0]} – ${ev[1]}</div>
+        <div class="reminder-text">${ev[2]}</div>
+      </div>
+      <div class="reminder-type-badge">${ev[3]}</div>`;
+
+    item.addEventListener("click", () => {
+      selectedItemIndex = i;
+      renderReminders();
+    });
+
+    list.appendChild(item);
+  });
+}
+
+function parseTime(str) {
+  const m = str.trim().match(/^(\d{1,2}):(\d{2})$/);
+  if (!m) return null;
+  return parseInt(m[1])*60 + parseInt(m[2]);
+}
+
+function addReminder() {
+  if (!selectedDay) { alert("Select a date first!"); return; }
+
+  const start = document.getElementById("startTime").value.trim();
+  const end   = document.getElementById("endTime").value.trim();
+  const text  = document.getElementById("eventText").value.trim();
+  const type  = document.getElementById("eventType").value;
+
+  const s = parseTime(start), e = parseTime(end);
+  if (!s || !e) { alert("Use HH:MM format for times."); return; }
+  if (e <= s)   { alert("End time must be after start time."); return; }
+  if (!text)    { alert("Please enter an event name."); return; }
+
+  const existing = reminders[selectedDay] || [];
+  for (const ev of existing) {
+    const es = parseTime(ev[0]), ee = parseTime(ev[1]);
+    if (s < ee && e > es) {
+      alert(`Schedule conflict with:\n${ev[0]} – ${ev[1]}  ${ev[2]}`);
+      return;
+    }
+  }
+
+  if (!reminders[selectedDay]) reminders[selectedDay] = [];
+  reminders[selectedDay].push([start, end, text, type]);
+  saveReminders();
+
+  document.getElementById("eventText").value = "";
+  document.getElementById("startTime").value = "";
+  document.getElementById("endTime").value   = "";
+  selectedItemIndex = -1;
+  drawCalendar();
+  renderReminders();
+}
+
+function getSelectedEvent() {
+  if (!selectedDay || selectedItemIndex < 0) return null;
+  const sorted = (reminders[selectedDay] || []).slice().sort((a,b) => a[0].localeCompare(b[0]));
+  return sorted[selectedItemIndex] || null;
+}
+
+function editReminder() {
+  const ev = getSelectedEvent();
+  if (!ev) { alert("Select an event first."); return; }
+
+  document.getElementById("startTime").value = ev[0];
+  document.getElementById("endTime").value   = ev[1];
+  document.getElementById("eventText").value = ev[2];
+  document.getElementById("eventType").value = ev[3];
+
+  // Remove the original from the array
+  const idx = reminders[selectedDay].findIndex(
+    r => r[0]===ev[0] && r[1]===ev[1] && r[2]===ev[2] && r[3]===ev[3]
+  );
+  if (idx > -1) reminders[selectedDay].splice(idx, 1);
+  saveReminders();
+  selectedItemIndex = -1;
+  drawCalendar();
+  renderReminders();
+}
+
+function deleteReminder() {
+  const ev = getSelectedEvent();
+  if (!ev) { alert("Select an event first."); return; }
+
+  const idx = reminders[selectedDay].findIndex(
+    r => r[0]===ev[0] && r[1]===ev[1] && r[2]===ev[2] && r[3]===ev[3]
+  );
+  if (idx > -1) reminders[selectedDay].splice(idx, 1);
+  saveReminders();
+  selectedItemIndex = -1;
+  drawCalendar();
+  renderReminders();
+}
+
+function clearDay() {
+  if (!selectedDay) return;
+  if (!confirm("Delete ALL reminders for this day?")) return;
+  reminders[selectedDay] = [];
+  saveReminders();
+  selectedItemIndex = -1;
+  drawCalendar();
+  renderReminders();
+}
+
+// Init
+drawCalendar();
 </script>
+</body>
 </html>
