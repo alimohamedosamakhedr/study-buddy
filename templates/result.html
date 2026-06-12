@@ -1,12 +1,231 @@
-<html>
+
 <head>
-    <title>result</title>
-    <style>
-           body { font-family: Arial; max-width: 600px; margin: 80px auto; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Buddy - Result</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #8E7CFF, #C38FFF);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-wrapper {
+    width: 100%;
+    max-width: 750px;
+}
+
+.result-card {
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+    border-radius: 30px;
+    padding: 40px;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.result-emoji {
+    font-size: 70px;
+    margin-bottom: 15px;
+}
+
+.result-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.result-score {
+    font-size: 60px;
+    font-weight: 700;
+    margin: 20px 0;
+}
+
+.result-score span {
+    font-size: 28px;
+    opacity: 0.75;
+}
+
+.result-time {
+    font-size: 16px;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 13px;
+    opacity: 0.75;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.achievements-card {
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 25px;
+    padding: 25px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.achievements-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    opacity: 0.85;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.achievement-item {
+    background: rgba(255,255,255,0.12);
+    border-radius: 15px;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.achievement-item:last-child {
+    margin-bottom: 0;
+}
+
+.achievement-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.achievement-desc {
+    font-size: 13px;
+    opacity: 0.75;
+}
+
+.play-again {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 20px;
+    background: white;
+    color: #7A5FFF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    text-align: center;
+}
+
+.play-again:hover {
+    background: #eee7ff;
+    transform: translateY(-3px);
+}
+
+</style>
 </head>
 <body>
-<h1>Final Score: {{ score }} / {{ total }}</h1>
-    <a href="/">yippie it works</a>
+
+<div class="result-wrapper">
+
+    <!-- Main result card -->
+    <div class="result-card">
+        {% if score == total %}
+            <div class="result-emoji">🏆</div>
+            <div class="result-title">Perfect Score!</div>
+        {% elif score >= total * 0.8 %}
+            <div class="result-emoji">🥇</div>
+            <div class="result-title">Great Job!</div>
+        {% elif score >= total * 0.5 %}
+            <div class="result-emoji">✅</div>
+            <div class="result-title">Well Done!</div>
+        {% else %}
+            <div class="result-emoji">📚</div>
+            <div class="result-title">Keep Studying!</div>
+        {% endif %}
+
+        <div class="result-score">
+            {{ score }} <span>/ {{ total }}</span>
+        </div>
+        <div class="result-time">⏱ Completed in {{ time_taken }} seconds</div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">Correct</div>
+            <div class="stat-value">{{ score }}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Wrong</div>
+            <div class="stat-value">{{ total - score }}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Time</div>
+            <div class="stat-value">{{ time_taken }}s</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Accuracy</div>
+            <div class="stat-value">{{ ((score / total) * 100) | int }}%</div>
+        </div>
+    </div>
+
+    <!-- Achievements -->
+    <div class="achievements-card">
+        <div class="achievements-title">🎖 Achievements</div>
+        {% for title, desc in achievements %}
+        <div class="achievement-item">
+            <div>
+                <div class="achievement-title">{{ title }}</div>
+                <div class="achievement-desc">{{ desc }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+</div>
+
 </body>
 </html>

@@ -6,9 +6,11 @@ import webbrowser
 import time 
 app = Flask(__name__) 
 app.secret_key = "quizkey"
+ 
+csv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Math.csv")
 
 def Question():
-    with open("Book1.csv", newline='', encoding='utf-8-sig') as f:
+    with open(csv_path, newline='', encoding='utf-8-sig') as f:
         questions = list(csv.DictReader(f))
     random.shuffle(questions)
     return questions[:5]
@@ -49,7 +51,7 @@ def answer():
 def result():
     end_time = time.time()                                
     time_taken = round(end_time - session["start_time"]) 
-    return render_template("result.html", score=session["score"], total=len(session["questions"],   time_taken=time_taken ))
+    return render_template("result.html", score=session["score"], total=len(session["questions"]),   time_taken=time_taken )
 
 if __name__ == "__main__":
     webbrowser.open("http://127.0.0.1:5000")

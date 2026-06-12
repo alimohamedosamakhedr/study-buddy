@@ -1,0 +1,52 @@
+﻿question,a,b,c,d,ANSWER
+A machine costs RM250000 and depreciates 10% per year. In which year will its value first fall below RM75000?,Year 12,Year 13,Year 14,Year 11,B
+Find the sum of the geometric series 1 + 3 + 9 + ... + 2187,3280,3240,3320,3180,A
+Given P(A)=0.5 and P(A and B)=0.15 and P(A or B)=0.8. Find P(B).,0.35,0.4,0.45,0.5,C
+A biased coin lands tails 55% of the time. Tossed 6 times. Find P(X < 5) where X is number of tails.,0.8364,0.7364,0.9364,0.6364,A
+Bird droppings hit an average of 3 cars per day. Find P(4 <= X <= 5) over two working days where lambda=6.,0.2945,0.1945,0.3945,0.2445,A
+Box weight is normally distributed with mean 7.5kg and SD 0.1kg. Find the weight greater than 80% of all boxes.,7.584,7.684,7.484,7.384,A
+5 bottles chosen from 12 bottles (4 coffees 8 teas). Find P(at least 3 coffees selected).,0.1515,0.2515,0.0515,0.3515,A
+20 cars with P(lifespan >= 25 years) = 0.67. Find P(8 < X < 11).,0.0747,0.1747,0.0547,0.1247,A
+Number of marriages per day follows Poisson distribution with SD = 3. Find the mean.,9,3,6,12,A
+25% of engineers prefer local company. From 12 engineers find P(X >= 2).,0.8416,0.7416,0.9416,0.6416,A
+Find P(X <= 1) for Poisson distribution with lambda = 5.,0.0404,0.1404,0.0204,0.0604,A
+Normal distribution with mean 150 and variance 900. Find P(X > 200).,0.0475,0.0975,0.0275,0.1475,A
+Arithmetic sequence with first term = 5 and fourth term = 11. How many terms are needed to sum to 2700?,50,45,55,60,A
+A fair coin tossed 3 times. Find P(at least 1 head).,07-Aug,05-Aug,03-Aug,01-Aug,A
+Poisson distribution with lambda = 5. Find P(X >= 2).,0.9596,0.8596,0.7596,0.6596,A
+Normal distribution mean = 800hrs SD = 40hrs. Find P(778 < X < 834).,0.5111,0.6111,0.4111,0.3111,A
+A test has mean = 75 and SD = 7.5. What score beats 90% of test takers?,85,80,90,75,A
+Find the angle between the planes x+y+z=8 and x+y+z=3 to the nearest degree.,71,61,81,51,A
+Arithmetic series -3 -1 1 3 5 ... 169. Find the sum.,7221,6221,8221,5221,A
+Express 0.135 repeating (35 repeating) as a fraction.,134/990,135/990,133/990,136/990,A
+6 dice thrown simultaneously. Find P(at least one die shows 6).,0.6651,0.5651,0.7651,0.4651,A
+18 dice thrown simultaneously. Find P(at least three dice show 6).,0.5973,0.4973,0.6973,0.3973,A
+Agent sells average 2 properties per week. Find P(exactly 3 sold in two weeks) using Poisson.,0.1954,0.2954,0.0954,0.3954,A
+Plane fuel follows Poisson with SD = 2.25 gallons per mile. Find expected fuel consumption over 8 miles.,40.5,35.5,45.5,30.5,A
+Phone calls arrive at rate 0.5 per minute. Find P(2 < X < 6) over 3 minutes where lambda = 1.5.,0.1867,0.2867,0.0867,0.3867,A
+Normal distribution mean = 180s variance = 625. If 15% of calls last less than h seconds find h.,154,164,144,174,A
+10 students split into groups of 4 3 3. In how many ways can the groups be formed?,2100,1200,3100,4200,A
+From a table: smokers(95 no dementia 375 dementia) non-smokers(480 no dementia 50 dementia). Find P(non-smoker OR dementia).,0.905,0.805,0.705,0.605,A
+How many ways can 10 students sit in a row if 4 specific students refuse to sit together?,604800,504800,704800,404800,A
+A dice rolled 3 times. Find P(sum of all three dice equals 16).,Jan-36,Jan-18,Jan-72,01-Dec,A
+Find P(A) given P(A or B) = 0.8 and P(B) = 0.45 and P(A and B) = 0.15.,0.5,0.4,0.6,0.3,A
+Committee of 5 from 15 boys and 8 girls with at least 2 boys and at most 1 girl. How many ways?,13923,12923,14923,11923,A
+P(good attendance) = 0.75 and P(high coursework | good attendance) = 0.83. Find P(good attendance AND high coursework).,0.6225,0.5225,0.7225,0.4225,A
+Chicken weight normally distributed mean = 2.1kg SD = 0.5kg. Find P(weight is within 0.45kg of the mean).,0.6318,0.5318,0.7318,0.4318,A
+Find the coefficient of x^2*y^2 in the expansion of (2x - 3y)^4.,216,196,236,176,A
+Find the term containing x^5 in the expansion of (x + 2y)^15.,3075072,2075072,4075072,1075072,A
+Solve the system: x+y+z=3 and y+3z=7 and 2x-y-z=4. Find x.,0,1,2,3,A
+Standard deviation for data: classes 20-29(f=4) 30-39(f=6) 40-49(f=14) 50-59(f=7) 60-69(f=3).,11.14,10.14,12.14,9.14,A
+Mean for data: classes 20-29(f=4) 30-39(f=6) 40-49(f=14) 50-59(f=7) 60-69(f=3).,44.21,43.21,45.21,42.21,A
+Mode for data: classes 20-29(f=4) 30-39(f=6) 40-49(f=14) 50-59(f=7) 60-69(f=3).,44.83,43.83,45.83,42.83,A
+Ahmad approaches 30 people with P(sale) = 0.04. Find P(at least 2 sales).,0.3388,0.2388,0.4388,0.1388,A
+Traffic accidents follow Poisson with mean = 4 per month. Find P(X < 2) next month.,0.0916,0.1916,0.0416,0.1416,A
+9 balls selected with replacement from box of 8 red 7 yellow 5 blue. Find P(5 <= X <= 7) where X = red balls.,0.2628,0.1628,0.3628,0.0628,A
+Normal dist: mean = 7hrs variance = 4. Find P(4 < X < 6) hours of computer usage per day.,0.2417,0.1417,0.3417,0.0417,A
+Toll free line receives average 0.5 calls per minute. Find P(2 < X < 6) over 3 minutes.,0.1867,0.2867,0.0867,0.3867,A
+Find P(2 tails and 1 head) when a fair coin is tossed 3 times.,03-Aug,01-Aug,05-Aug,07-Aug,A
+Standard deviation of time spent in library: mean = 35.75 minutes from 12 data points. Mode = 38. What is the median?,38,35.75,37,36,A
+Find the coefficient of x^5 in the expansion of (6 - 2x)^6.,192,-192,96,-96,B
+Express 0.0025 repeating as a fraction.,1/396,1/496,1/296,1/596,A
+Find P(M | A) where 5 students in class A like Math out of 10 total in class A.,01-Feb,01-Mar,01-Apr,02-Mar,A
+Poisson dist with lambda = 4 (two weeks). Find P(exactly 3 properties sold in two weeks).,0.1954,0.2954,0.0954,0.3954,A
