@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Study Buddy Login</title>
+<title>Study Buddy Sign Up</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -18,16 +18,16 @@
 }
 
 body{
-    height:100vh;
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     background:radial-gradient(#8E7CFF,#C38FFF);
-    overflow:hidden;
+    padding:20px;
 }
 
-.login-container{
-    width:400px;
+.signup-container{
+    width:420px;
     background:rgba(255,255,255,0.15);
     backdrop-filter:blur(15px);
     border:1px solid rgba(255,255,255,0.2);
@@ -36,25 +36,25 @@ body{
     box-shadow:0 10px 40px rgba(0,0,0,0.2);
 }
 
-.login-title{
+.signup-title{
     text-align:center;
     margin-bottom:35px;
 }
 
-.login-title h1{
+.signup-title h1{
     color:white;
     font-size:40px;
     font-weight:700;
     margin-bottom:10px;
 }
 
-.login-title p{
+.signup-title p{
     color:#f3f3f3;
     font-size:15px;
 }
 
 .input-group{
-    margin-bottom:25px;
+    margin-bottom:20px;
 }
 
 .input-group label{
@@ -79,7 +79,7 @@ body{
     box-shadow:0 0 15px rgba(255,255,255,0.4);
 }
 
-.login-btn{
+.signup-btn{
     width:100%;
     padding:15px;
     border:none;
@@ -90,10 +90,18 @@ body{
     font-weight:600;
     cursor:pointer;
     transition:0.3s;
+    margin-top:10px;
 }
 
-.login-btn:hover{
+.signup-btn:hover{
     background:#ece8ff;
+}
+
+.message{
+    text-align:center;
+    margin-top:15px;
+    font-size:14px;
+    display:none;
 }
 
 .bottom-text{
@@ -113,33 +121,28 @@ body{
     text-decoration:underline;
 }
 
-.error-message{
-    color:#ffdddd;
-    text-align:center;
-    margin-top:15px;
-    display:none;
-}
-
-.success-message{
-    color:#d4ffd4;
-    text-align:center;
-    margin-top:15px;
-    display:none;
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="login-container">
+<div class="signup-container">
 
-    <div class="login-title">
+    <div class="signup-title">
         <h1>Study Buddy</h1>
-        <p>Welcome back! Login to continue studying.</p>
+        <p>Create your account and start studying smarter.</p>
     </div>
 
-    <form id="loginForm">
+    <form id="signupForm">
+
+        <div class="input-group">
+            <label>Full Name</label>
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your full name"
+                required>
+        </div>
 
         <div class="input-group">
             <label>Email</label>
@@ -155,66 +158,68 @@ body{
             <input
                 type="password"
                 id="password"
-                placeholder="Enter your password"
+                placeholder="Create a password"
                 required>
         </div>
 
-        <button type="submit" class="login-btn">
-            Login
+        <div class="input-group">
+            <label>Confirm Password</label>
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirm your password"
+                required>
+        </div>
+
+        <button type="submit" class="signup-btn">
+            Sign Up
         </button>
+
+        <p id="message" class="message"></p>
 
     </form>
 
-    <p class="error-message" id="errorMessage">
-        Invalid email or password.
-    </p>
-
-    <p class="success-message" id="successMessage">
-        Login successful! Redirecting...
-    </p>
-
     <div class="bottom-text">
-        Don't have an account?
-        <a href="Signup.html">Sign Up</a>
+        Already have an account?
+        <a href="login.html">Login</a>
     </div>
 
 </div>
 
 <script>
 
-document.getElementById("loginForm").addEventListener("submit", function(event){
+document.getElementById("signupForm").addEventListener("submit", function(event){
 
     event.preventDefault();
 
+    const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
 
-    const savedEmail = localStorage.getItem("userEmail");
-    const savedPassword = localStorage.getItem("userPassword");
+    const message = document.getElementById("message");
 
-    const errorMessage = document.getElementById("errorMessage");
-    const successMessage = document.getElementById("successMessage");
+    if(password !== confirmPassword){
 
-    errorMessage.style.display = "none";
-    successMessage.style.display = "none";
-
-    if(email === savedEmail && password === savedPassword){
-
-        localStorage.setItem("isLoggedIn", "true");
-
-        successMessage.style.display = "block";
-
-        setTimeout(function(){
-
-            window.location.href = "main_page.html";
-
-        }, 1000);
-
-    }else{
-
-        errorMessage.style.display = "block";
+        message.style.display = "block";
+        message.style.color = "#ffdddd";
+        message.textContent = "Passwords do not match!";
+        return;
 
     }
+
+    // Save user information
+    localStorage.setItem("userName", name);
+    localStorage.setItem("userEmail", email);
+    localStorage.setItem("userPassword", password);
+
+    message.style.display = "block";
+    message.style.color = "#d4ffd4";
+    message.textContent = "Account created successfully! Redirecting to login page...";
+
+    setTimeout(() => {
+        window.location.href = "login.html";
+    }, 1500);
 
 });
 
