@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -72,11 +72,6 @@ body{
     outline:none;
     font-size:15px;
     background:rgba(255,255,255,0.9);
-    transition:0.3s;
-}
-
-.input-group input:focus{
-    box-shadow:0 0 15px rgba(255,255,255,0.4);
 }
 
 .login-btn{
@@ -89,28 +84,6 @@ body{
     font-size:17px;
     font-weight:600;
     cursor:pointer;
-    transition:0.3s;
-}
-
-.login-btn:hover{
-    background:#ece8ff;
-}
-
-.bottom-text{
-    text-align:center;
-    margin-top:25px;
-    color:white;
-    font-size:14px;
-}
-
-.bottom-text a{
-    color:white;
-    font-weight:600;
-    text-decoration:none;
-}
-
-.bottom-text a:hover{
-    text-decoration:underline;
 }
 
 .error-message{
@@ -127,6 +100,34 @@ body{
     display:none;
 }
 
+.bottom-text{
+    text-align:center;
+    margin-top:25px;
+    color:white;
+    font-size:14px;
+}
+
+.bottom-text a{
+    color:white;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.forgot-text{
+    text-align:center;
+    margin-top:15px;
+}
+
+.forgot-text a{
+    color:white;
+    font-size:14px;
+    text-decoration:none;
+    font-weight:500;
+}
+
+.forgot-text a:hover{
+    text-decoration:underline;
+}
 </style>
 </head>
 
@@ -143,20 +144,12 @@ body{
 
         <div class="input-group">
             <label>Email</label>
-            <input
-                type="email"
-                id="email"
-                placeholder="Enter your email"
-                required>
+            <input type="email" id="email" required>
         </div>
 
         <div class="input-group">
             <label>Password</label>
-            <input
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-                required>
+            <input type="password" id="password" required>
         </div>
 
         <button type="submit" class="login-btn">
@@ -170,7 +163,7 @@ body{
     </p>
 
     <p class="success-message" id="successMessage">
-        Login successful! Redirecting...
+        Sending OTP...
     </p>
 
     <div class="bottom-text">
@@ -178,9 +171,17 @@ body{
         <a href="Signup.html">Sign Up</a>
     </div>
 
+    <div class="forgot-text">
+     <a href="ForgotPassword.html">Forgot Password?</a>
+    </div>
+
 </div>
 
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <script>
+emailjs.init("aneKk63232SCSLr-W");
 
 document.getElementById("loginForm").addEventListener("submit", function(event){
 
@@ -200,20 +201,46 @@ document.getElementById("loginForm").addEventListener("submit", function(event){
 
     if(email === savedEmail && password === savedPassword){
 
-        localStorage.setItem("isLoggedIn", "true");
+        const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+        localStorage.setItem("loginOTP", otp);
+        localStorage.setItem("otpEmail", email);
+
+        // store expiry time (15 minutes)
+        const expiryTime = Date.now() + 15 * 60 * 1000;
+        localStorage.setItem("otpExpiry", expiryTime);
 
         successMessage.style.display = "block";
+        successMessage.innerHTML = "Sending OTP...";
 
-        setTimeout(function(){
+        emailjs.send(
+            "service_1y6yowd",
+            "template_8fhzy9m",
+            {
+                user_email: email,
+                otp_code: otp
+            }
+        )
+        .then(function(response){
 
-            window.location.href = "main_page.html";
+            console.log("SUCCESS:", response);
 
-        }, 1000);
+            window.location.href = "otp.html";
+
+        })
+        .catch(function(error){
+
+            console.log("FAILED:", error);
+
+            errorMessage.style.display = "block";
+            errorMessage.innerHTML = "Failed to send OTP. Try again.";
+
+        });
 
     }else{
 
         errorMessage.style.display = "block";
-
+        errorMessage.innerHTML = "Invalid email or password.";
     }
 
 });

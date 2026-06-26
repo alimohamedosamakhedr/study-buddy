@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>OTP Verification</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:radial-gradient(#8E7CFF,#C38FFF);
+}
+
+.otp-container{
+    width:400px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:30px;
+    padding:45px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+h1{
+    color:white;
+    margin-bottom:10px;
+}
+
+p{
+    color:white;
+    margin-bottom:10px;
+    font-size:14px;
+}
+
+#timer{
+    color:#ffffff;
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:15px;
+    outline:none;
+    font-size:16px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:15px;
+    background:white;
+    color:#7A5FFF;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ece8ff;
+}
+
+.error{
+    color:#ffdddd;
+    margin-top:15px;
+    display:none;
+}
+
+.success{
+    color:#d4ffd4;
+    margin-top:15px;
+    display:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="otp-container">
+
+    <h1>OTP Verification</h1>
+
+    <p>Enter the 6-digit OTP sent to your email.</p>
+
+    <div id="timer">15:00</div>
+
+    <input type="text" id="otpInput" placeholder="Enter OTP" maxlength="6">
+
+    <button onclick="verifyOTP()">Verify OTP</button>
+
+    <p class="error" id="errorMessage"></p>
+
+    <p class="success" id="successMessage">OTP Verified! Redirecting...</p>
+
+</div>
+
+<script>
+
+let attempts = 0;
+const maxAttempts = 5;
+
+// 🔥 TIMER SETUP (15 minutes)
+let timeLeft = 15 * 60; // seconds
+
+function startTimer(){
+
+    const timerDisplay = document.getElementById("timer");
+
+    const timer = setInterval(function(){
+
+        let minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        timerDisplay.innerHTML = minutes + ":" + seconds;
+
+        timeLeft--;
+
+        if(timeLeft < 0){
+
+            clearInterval(timer);
+
+            timerDisplay.innerHTML = "00:00";
+
+            document.getElementById("otpInput").disabled = true;
+
+            document.getElementById("errorMessage").style.display = "block";
+            document.getElementById("errorMessage").innerHTML =
+                "OTP expired. Please login again.";
+        }
+
+    }, 1000);
+}
+
+startTimer();
+
+function verifyOTP(){
+
+    const enteredOTP =
+        document.getElementById("otpInput").value;
+
+    const savedOTP =
+        localStorage.getItem("loginOTP");
+
+    const expiryTime =
+        localStorage.getItem("otpExpiry");
+
+    const errorMessage =
+        document.getElementById("errorMessage");
+
+    const successMessage =
+        document.getElementById("successMessage");
+
+    errorMessage.style.display = "none";
+    successMessage.style.display = "none";
+
+    // 🔴 CHECK EXPIRY (backup safety)
+    if(Date.now() > expiryTime){
+
+        errorMessage.style.display = "block";
+        errorMessage.innerHTML =
+            "OTP expired. Please login again.";
+
+        document.getElementById("otpInput").disabled = true;
+
+        return;
+    }
+
+    // 🔴 ATTEMPTS CHECK
+    if(attempts >= maxAttempts){
+
+        errorMessage.style.display = "block";
+        errorMessage.innerHTML =
+            "Too many attempts. Please login again.";
+
+        document.getElementById("otpInput").disabled = true;
+
+        return;
+    }
+
+    // 🔴 VERIFY OTP
+    if(enteredOTP === savedOTP){
+
+        localStorage.setItem("isLoggedIn", "true");
+
+        successMessage.style.display = "block";
+
+        setTimeout(function(){
+            window.location.href = "main_page.html";
+        }, 1000);
+
+    }else{
+
+        attempts++;
+
+        errorMessage.style.display = "block";
+        errorMessage.innerHTML =
+            "Invalid OTP. Attempts left: " +
+            (maxAttempts - attempts);
+
+        if(attempts >= maxAttempts){
+
+            document.getElementById("otpInput").disabled = true;
+
+            errorMessage.innerHTML =
+                "Too many failed attempts. Please login again.";
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>
+
