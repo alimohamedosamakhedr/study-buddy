@@ -1,0 +1,51 @@
+question,a,b,c,d,ANSWER
+"A 48.5 kg box just begins to move when force exceeds 350 N. What is the coefficient of static friction? (g=9.81)",0.736,0.486,0.635,0.812,A
+"A 48.5 kg box moves at steady speed with 231 N force. What is the coefficient of kinetic friction? (g=9.81)",0.736,0.486,0.521,0.398,B
+"A 50g mass on a spring has amplitude 12cm and period 1.70s. What is the frequency?",0.388Hz,0.488Hz,0.588Hz,0.688Hz,C
+"A 50g mass on a spring has amplitude 12cm and period 1.70s. What is the spring constant?",0.483N/m,0.583N/m,0.683N/m,0.783N/m,C
+"A 50g mass on a spring has amplitude 12cm and period 1.70s. What is the maximum speed?",0.24m/s,0.34m/s,0.44m/s,0.54m/s,C
+"A 50g mass on a spring has amplitude 12cm and period 1.70s. What is the maximum acceleration?",1.24m/s2,1.44m/s2,1.64m/s2,1.84m/s2,C
+"A 1.5kg block is attached to a spring with k=2000N/m stretched 0.30cm. What is the period of motion?",0.072s,0.172s,0.272s,0.372s,B
+"A 1.5kg block is attached to a spring with k=2000N/m stretched 0.30cm. What is the amplitude?",0.001m,0.002m,0.003m,0.004m,C
+"A 1.5kg block is attached to a spring with k=2000N/m stretched 0.30cm. What is the total energy?",3mJ,6mJ,9mJ,12mJ,C
+"A 1.5kg block is attached to a spring with k=2000N/m stretched 0.30cm. What is the maximum velocity?",0.0895m/s,0.0995m/s,0.1095m/s,0.1195m/s,C
+"A wave has equation x=0.45cos8.40t. What is the amplitude?",0.25m,0.35m,0.45m,0.55m,C
+"A wave has equation x=0.45cos8.40t for a 0.50kg mass. What is the total energy?",2.6J,3.2J,3.6J,4.0J,C
+"A 750g mass on a spring (k=124N/m) is struck giving initial speed 2.76m/s. What is the period?",0.29s,0.39s,0.49s,0.59s,C
+"A 750g mass on a spring (k=124N/m) is struck giving initial speed 2.76m/s. What is the amplitude?",0.115m,0.165m,0.215m,0.265m,C
+"A 750g mass on a spring (k=124N/m) is struck giving initial speed 2.76m/s. What is the maximum acceleration?",25.5m/s2,30.5m/s2,35.5m/s2,40.5m/s2,C
+"A toy completes 4 oscillations in 10 seconds. What is the oscillation frequency?",0.2Hz,0.3Hz,0.4Hz,0.5Hz,C
+"A toy with k=10N/m is displaced 10cm. What is the angular frequency if f=0.4Hz?",1.5rad/s,2.0rad/s,2.5rad/s,3.0rad/s,C
+"A toy with k=10N/m displaced 10cm has f=0.4Hz. What is the maximum speed?",0.15m/s,0.20m/s,0.25m/s,0.30m/s,C
+"A 0.20kg mass on a spring (k=50N/m) is compressed 0.10m. What is the angular velocity?",12.81rad/s,13.81rad/s,14.81rad/s,15.81rad/s,D
+"A 0.20kg mass on a spring (k=50N/m) compressed 0.10m. What is the acceleration at t=1.5s?",−18.88m/s2,−20.88m/s2,−22.88m/s2,−24.88m/s2,C
+"Audio system 1 produces 80dB and system 2 produces 83dB. What is the ratio I2/I1?",1.5,2.0,2.5,3.0,B
+"A travelling wave y=(3.5cm)sin[π/3.0cm(x−66cm/s·t)]. What is the amplitude?",2.5cm,3.0cm,3.5cm,4.0cm,C
+"A travelling wave y=(3.5cm)sin[π/3.0cm(x−66cm/s·t)]. What is the wavelength?",4cm,5cm,6cm,7cm,C
+"A travelling wave y=(3.5cm)sin[π/3.0cm(x−66cm/s·t)]. What is the frequency?",9Hz,10Hz,11Hz,12Hz,C
+"A travelling wave y=(3.5cm)sin[π/3.0cm(x−66cm/s·t)]. In which direction does it travel?",left,right,upward,downward,B
+"A laser beam hits an air boundary at 35 degrees reflection and 47 degrees refraction. What is the index of refraction?",1.08,1.18,1.28,1.38,C
+"A laser beam hits an air boundary with index 1.28. What is the minimum angle for total internal reflection?",41.4,46.4,51.4,56.4,C
+"A beam passes through materials with indices 1.33 1.46 and 1.74 at 50 degrees incidence. What is the exit angle into air?",30,40,50,60,C
+"In a Young's double-slit experiment slits are 2mm apart. Wavelengths 750nm and 900nm used with screen 2m away. At what minimum distance do bright fringes coincide?",2.5mm,3.5mm,4.5mm,5.5mm,C
+"A 2-slit pattern on a screen 1m away has third-order maxima 25cm apart on both sides. What is the width of the central bright fringe?",0.0217m,0.0317m,0.0417m,0.0517m,C
+"An equilateral prism has angle of incidence 52.2 degrees where light travels parallel to the base. What is the index of refraction?",1.38,1.48,1.58,1.68,C
+"An equilateral prism has index of refraction 1.58. What is the critical angle?",34.3,37.3,39.3,42.3,C
+"The power of a sound source is 75mW. What is the sound intensity 10m from the source?",3.97x10-8W/m2,4.97x10-8W/m2,5.97x10-8W/m2,6.97x10-8W/m2,C
+"A sinusoidal wave y=0.025sin(1.3x+25.0t). What is the wavelength?",2.83cm,3.83cm,4.83cm,5.83cm,C
+"A sinusoidal wave y=0.025sin(1.3x+25.0t). What is the period?",0.15s,0.20s,0.25s,0.30s,C
+"A sinusoidal wave y=0.025sin(1.3x+25.0t). What is the wave speed?",15.23cm/s,17.23cm/s,19.23cm/s,21.23cm/s,C
+"A sinusoidal wave y=0.025sin(1.3x+25.0t). In which direction does the wave travel?",right,left,upward,downward,B
+"A standing wave has nodes at x=0 2 4 and 6cm. What is the wavelength?",2cm,3cm,4cm,5cm,C
+"A standing wave has nodes at x=0 2 4 6cm. Where are the antinodes?",0cm 2cm 4cm,0.5cm 2.5cm 4.5cm,1cm 3cm 5cm,1.5cm 3.5cm 5.5cm,C
+"A dB meter reads 135dB at 5m from a speaker. What is the power output of the speaker?",7933.7W,8933.7W,9933.7W,10933.7W,C
+"A sound source of 135dB at 5m. At what distance does the level drop to 85dB?",1081m,1281m,1481m,1581m,D
+"A 36kg suitcase is pulled with 105N at 38 degrees above horizontal. What is the normal force? (g=9.81)",268.2N,278.2N,288.2N,298.2N,C
+"A 36kg suitcase pulled with 105N at 38 degrees. Coefficients static=0.273 kinetic=0.117. Does it slide?",No it stays still,Yes it slides,Not enough information,It depends on the surface,B
+"A 36kg suitcase slides with kinetic friction 0.117 and normal force 288.2N. What is the acceleration?",0.86m/s2,1.06m/s2,1.26m/s2,1.46m/s2,C
+"A 3kg block on floor has static friction 0.35. What force causes it to start sliding? (g=9.81)",8.29N,9.29N,10.29N,11.29N,C
+"A 3kg block slides with kinetic friction 0.20. What is the net force after sliding starts? (g=9.81)",2.41N,3.41N,4.41N,5.41N,C
+"A 3kg block starts sliding with net force 4.41N. What is its acceleration?",0.47m/s2,0.97m/s2,1.47m/s2,1.97m/s2,C
+"Two blocks 4kg and 8kg slide down a 30 degree incline. Kinetic friction 0.25 for 4kg and 0.35 for 8kg. What is their acceleration?",1.21m/s2,1.71m/s2,2.21m/s2,2.71m/s2,C
+"Two blocks 4kg and 8kg on a 30 degree incline with acceleration 2.21m/s2. What is the tension in the string?",1.23N,1.73N,2.23N,2.73N,C
+"Tony pulls a 20kg suitcase with 100N at 25 degrees above horizontal. What is the normal force? (g=9.81)",143.7N,148.7N,153.7N,158.7N,C
