@@ -1,0 +1,51 @@
+question,a,b,c,d,ANSWER
+"A(n) ___ was originally a complimentary word for a computer enthusiast.",hacker,cracker,script kiddie,cyberextortionist,A
+"A(n) ___ often uses prewritten hacking and cracking programs.",hacker,cracker,script kiddie,cyberextortionist,C
+"Malware is short for ___ software.",malicious,malignant,malevolent,malady,A
+"Another term for botnet is ___ army.",ghost,vampire,zombie,spy,C
+"What is an audit trail?",A log of financial transactions,A file that records access attempts,A list of passwords and user names on a network,A record of hacking attempts,B
+"A password ___ is a service that stores all of your account information securely.",vault,binder,manager,collection,C
+"Passcode is another term for a(n) ___.",user name,encryption algorithm,passphrase,PIN,D
+"PIN stands for personal identification ___.",number,name,network,note,A
+"Badges cards smart cards and keys are examples of ___ objects.",wearable,carried,possessed,pocket,C
+"An iris recognition system uses technology to read patterns in the user's ___.",eye,fingerprints,signature,face,A
+"Which best describes a back door?",A file recovery method that circumvents the network,An invisible image that downloads a virus,A hardware device that reinforces security,A program that allows bypassing security controls,D
+"Your computer seems to be controlled from a remote location. What malware do you have?",worm,rootkit,trojan horse,virus,B
+"Your computer's malware keeps copying itself repeatedly using up resources. What type is it?",worm,rootkit,trojan horse,virus,A
+"If a website address begins with https instead of http what do you know?",It likely is spoofed,It is secure,It provides security services and information,It contains encrypted data,B
+"An encryption ___ is a set of steps that converts readable text into unreadable text.",series,algorithm,method,key,B
+"FERPA regulates the confidentiality of ___.",criminal records,students educational records,financial transactions,user names and passwords,B
+"___ is a collection of unprocessed items including text numbers images audio and video.",Data,Information,Output,A byte,A
+"A(n) ___ key is one that switches between two states each time a user presses the key.",function,toggle,command,control,B
+"A(n) ___ keyboard has a design that reduces the chance of RSIs.",full-service,expandable,compact,ergonomic,D
+"A graphics tablet is also called a(n) ___.",digitizer,illustration pad,art input device,illustrator,A
+"Motion input is sometimes called ___ recognition.",body,movement,gesture,simulated,C
+"Original forms of data such as time cards or order forms are known as ___ documents.",input,information,scannable,source,D
+"A(n) ___ is a light-sensing input device that reads printed text and graphics and translates results for the computer.",inputter,digitizer,scanner,recognizer,C
+"The banking industry almost exclusively uses ___ for check processing.",QR codes,MICR,magnetic stripes,OCR,B
+"Most current displays are a type of ___ display.",large screen,flat-panel,translucent,fixed width,B
+"Which display technology was developed by Apple produces vibrant colors and supports viewing from all angles?",Retina Display,LCD,active-matrix,OLED,A
+"For what purpose is keylogging software used?",To translate input to another language,To secure the keyboard from theft,To store every keystroke in a file for later retrieval,To determine if input device is compromised,C
+"Which of the following is NOT true about touch screens?",Dragging is an example of a gesture,Touch screens require separate input devices,Multi-touch screens recognize multiple points of contact,Newer OS optimize UI for touch input,B
+"What does OCR software do?",Converts a scanned image into an editable text file,Creates a high resolution version for graphic artists,Translates a scanned image into a printed hard copy,Creates tags and metadata for scanned images,A
+"Which best describes active-matrix technology?",Uses organic molecules that are self-illuminating,Uses a separate transistor for each liquid crystal cell,LCD technology built into screen instead of behind it,Contains additional audio and video cards,B
+"The ___ ratio defines a display's width relative to its height.",pixel,screen,aspect,resolution,C
+"Printer resolution is measured by the number of ___ per inch a printer can print.",dots,pixels,bits,characters,A
+"___ is the number of bytes a storage medium can hold.",Capacity,File size,Capability,Disk dimension,A
+"___ is the process of transferring items from a storage medium into memory.",Writing,Reading,Archiving,Scanning,B
+"A gigabyte is approximately 1 ___ bytes.",thousand,million,billion,trillion,C
+"A megabyte is approximately 1 ___ bytes.",thousand,million,billion,trillion,B
+"The term hard drive refers collectively to hard disks and ___.",USB flash drives,SSDs,memory cards,optical discs,B
+"___ is the process of dividing a hard disk into tracks and sectors.",Fragmentation,Detachment,Dissection,Formatting,D
+"What does a disk's form factor describe?",size,operating system,speed,capacity,A
+"A(n) ___ is a flash memory storage device that contains its own processor to manage its storage.",thumb drive,optical disc,SSD,magnetic hard disk,C
+"A group of two or more integrated hard drives is called a(n) ___.",SSD,RAID,multidisk,duplicate drive,B
+"Which type of user is most likely to use a RAID?",home,small business,enterprise,mobile,C
+"SDHC and miniSD are examples of ___.",USB flash drives,memory cards,controllers,portable hard drives,B
+"Which best describes the purpose of the Creative Commons?",Provide standard licensing options for owners of creative works,Create a portal of low-cost or free art,Provide accessibility guidelines for web artwork,Enact legislation to protect artists work,A
+"What occurs during a head crash?",The top platter collapses,The read/write head touches the surface of a platter,A hard disk attempts to store data into a flawed sector,The rpm of the platters is too high causing friction,B
+"Which of the following is NOT true about SSDs?",SSDs have slower access times than hard disks,Some computers have both a hard disk and an SSD,Defragmentation is not required,SSDs are quieter than hard disks,A
+"Which best defines the purpose of a controller for drives?",Interact between the OS and applications,Support traffic on a small home network,Prioritize actions within a CPU,Transfer data between a drive and the system bus,D
+"Optical discs store items using microscopic ___ and ___.",dents/mesas,bumps/smooths,pits/lands,holes/levels,C
+"Which best describes redundancy as it pertains to enterprise businesses?",If one hardware component fails another can assume its tasks,When hardware becomes obsolete and is replaced,When employees unknowingly duplicate data entry,The use of external consultants for the same tasks,A
+"Thumb drive is another term for a(n) ___.",memory stick,SSD,USB flash drive,memory card,C

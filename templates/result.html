@@ -204,7 +204,7 @@ body {
             <div class="stat-label">Time</div>
             <div class="stat-value">{{ time_taken }}s</div>
         </div>
-        <div class="stat-card">
+        <div class="stat-card" style="background: {% if (score / total) >= 0.5 %} rgb(102, 255, 0) {% else %} rgb(255, 0, 0) {% endif %}">
             <div class="stat-label">Accuracy</div>
             <div class="stat-value">{{ ((score / total) * 100) | int }}%</div>
         </div>
