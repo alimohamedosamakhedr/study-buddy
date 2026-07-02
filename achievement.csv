@@ -1,2 +1,37 @@
-﻿time ,achievement
-5,
+﻿name,condition_type,condition_value,description
+Perfect Score,score_percent,100,You got every single question correct!
+High Scorer,score_percent,80,You scored 80% or above. Great work!
+Passed,score_percent,50,You scored more than half. Well done!
+Almost There,score_percent,40,You were close! Keep practicing.
+Keep Studying,score_percent,0,Don't give up! Practice makes perfect.
+Speedster,time_max,30,You finished in under 30 seconds!
+Quick Thinker,time_max,60,You finished in under a minute!
+Steady Pacer,time_max,120,You finished in under 2 minutes!
+Take Your Time,time_min,120,You took your time and thought it through!
+
+
+def get_achievements(score, total, time_taken):
+    achievements = []
+    score_percent = (score / total) * 100
+
+    with open(csv_path, newline='', encoding='utf-8-sig') as f:
+        reader = csv.DictReader(f)
+        print(reader.fieldnames)
+        for row in reader:
+            earned = False
+            if row["condition_type"] == "score_percent":
+                if score_percent >= int(row["condition_value"]):
+                    earned = True
+            elif row["condition_type"] == "score_exact":
+                if score == int(row["condition_value"]):
+                    earned = True
+            elif row["condition_type"] == "time_max":
+                if time_taken <= int(row["condition_value"]):
+                    earned = True
+            elif row["condition_type"] == "time_min":
+                if time_taken > int(row["condition_value"]):
+                    earned = True
+            if earned:
+                achievements.append((row["name"], row["description"]))
+
+    return achievements

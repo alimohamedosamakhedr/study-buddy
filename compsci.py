@@ -54,5 +54,4 @@ def result():
     return render_template("result.html", score=session["score"], total=len(session["questions"]),   time_taken=time_taken )
 
 if __name__ == "__main__":
-    webbrowser.open("http://127.0.0.1:5000")
-    app.run(debug=True)
+    app.run(debug=True, port=5003)
