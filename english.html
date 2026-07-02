@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Buddy - Home</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:radial-gradient(circle at top,#8E7CFF,#C38FFF);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    display:flex;
+    width:100%;
+    max-width:1400px;
+    gap:25px;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width:300px;
+    min-height:90vh;
+    padding:25px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 10px 40px rgba(0,0,0,0.15);
+    color:white;
+}
+
+.sidebar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+}
+
+.sidebar-header h2{
+    font-size:24px;
+    font-weight:700;
+}
+
+.x_button button{
+    background:rgba(255,255,255,0.2);
+    border:none;
+    color:white;
+    font-size:20px;
+    border-radius:12px;
+    width:45px;
+    height:45px;
+    cursor:pointer;
+}
+
+/* Menu */
+
+.menu_items,
+.menu_items_selected{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:15px;
+    border-radius:18px;
+    margin-bottom:20px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.menu_items{
+    background:rgba(255,255,255,0.12);
+}
+
+.menu_items:hover{
+    background:rgba(255,255,255,0.25);
+    transform:translateX(5px);
+}
+
+.menu_items_selected{
+    background:white;
+    color:#7A5FFF;
+    font-weight:600;
+}
+
+.icon{
+    font-size:22px;
+}
+
+/* Main */
+
+.main{
+    flex:1;
+    min-height:90vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    border-radius:30px;
+    padding:40px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 10px 40px rgba(0,0,0,0.15);
+    text-align:center;
+    color:white;
+}
+
+.main h1{
+    font-size:55px;
+    margin-bottom:10px;
+}
+
+.main p{
+    font-size:18px;
+    margin-bottom:30px;
+}
+
+.button{
+    padding:18px 35px;
+    border:none;
+    border-radius:18px;
+    background:white;
+    color:#7A5FFF;
+    font-size:22px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.button:hover{
+    background:#f1ecff;
+}
+
+/* Cards */
+
+.quick-actions{
+    display:flex;
+    gap:20px;
+    margin-top:40px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.card{
+    width:220px;
+    padding:20px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.2);
+    color:white;
+    transition:0.3s;
+}
+
+.card:hover{
+    background:rgba(255,255,255,0.22);
+    transform:translateY(-5px);
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+/* Welcome */
+
+.welcome-card{
+    background:rgba(255,255,255,0.18);
+    border-radius:25px;
+    padding:30px;
+    color:white;
+    margin-bottom:25px;
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.welcome-text h2{
+    font-size:36px;
+    margin-bottom:8px;
+}
+
+.welcome-text p{
+    font-size:17px;
+    color:#f3f3f3;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <div class="sidebar-header">
+            <h2>STUDY BUDDY</h2>
+
+            <div class="x_button">
+                <button>☰</button>
+            </div>
+        </div>
+
+        <a href="main_page.html" class="menu_items">
+            <div>🏠</div>
+            <span>Home</span>
+        </a>
+
+        <a href="Study_resources.html" class="menu_items active">
+            <div>📚</div>
+            <span>Study Resources</span>
+        </a>
+
+        <a href="Quiz and Revision.html" class="menu_items">
+            <div>📝</div>
+            <span>Quiz & Revision</span>
+        </a>
+
+        <a href="Calender.html" class="menu_items">
+            <div>📅</div>
+            <span>Calendar</span>
+        </a>
+
+        <a href="logout.html" class="menu_items">
+            🚪 <span>Log Out</span>
+        </a>
+
+    </div>
+
+    <!-- Main -->
+
+    <div class="main">
+
+        <div class="welcome-card">
+
+            <div class="welcome-text">
+                <h2>English</h2>
+                <p>Continue learning and stay ahead today.</p>
+            </div>
+
+        </div>
+            <h1>Modal verbs</h1>
+            <p> May can be used for polite request, formal permission or level of certinty</p>
+            <p>Might can used for level of certinty and polite request</p>
+            <p>Should can be used when giving advice or 90% level of certainty</p>
+            <p>Ought to can be used when giving advice</p>
+            <p>Had better is used when giving advice but with threat of a bad result</p>
+            <p>Be supposed to is used when there is an expectation or an unfulfilled expectation</p>
+            <p>Must is used in strong necessity, prohibiton or high level of certinty</p>
+            <p>Have to is used in necessity or lack of it</p>
+            <p>Have got to is used in necessity</p>
+            <p>Will is used in complete certainty,willingess or polite request</p>
+            <p></p>
+            <h1>Modifier</h1>
+            <p>A modifier can be a word (adjectives, adverbs, demonstratives, possessive determiners, degree
+modifiers, intensifiers), a phrase (Prepositional phrases), or even a clause that serves as an
+adjective or an adverb to provide additional information about another word or group of words.
+Modifiers could either be restrictive (essential to the meaning of a sentence) or non-restrictive
+(additional/ non-essential elements in a sentence). </p>
+            <h1>Misplaced Modifiers</h1>
+            <p>A modifier ought to be placed beside the words they modify, and misplaced modifiers can
+cause the readers to misinterpret the intended meaning. </p>
+            <h2>Correcting Misplaced Modifiers</h2>
+            <p>     To correct the misplaced modifier issue, we should place the modifiers right before or after the
+word they modify</p>   
+            <h1>Dangling Modifiers</h1>   
+`           <p>Dangling modifiers refer to descriptive words that are used to start a sentence but do not really
+describe what the writer intended them to describe. It is important to remember that a modifier
+that starts a sentence must be followed by the word it is supposed to describe, immediately.</p>
+        </div>
+    </div>
+    
