@@ -11,5 +11,4 @@ for f in files:
     subprocess.Popen(["python", os.path.join(BASE_DIR, f)])
 
 time.sleep(2) 
-webbrowser.
 webbrowser.open(os.path.join(BASE_DIR, "login.html"))
