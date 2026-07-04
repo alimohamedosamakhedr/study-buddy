@@ -2,8 +2,8 @@ import subprocess
 import os
 import webbrowser
 import time
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+import sys
+BASE_DIR = os.path.dirname(sys.executable)
 
 files = ["Math.py", "english.py", "compsci.py", "physics.py"]
 

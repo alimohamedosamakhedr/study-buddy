@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Buddy - Quiz & Revision</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:radial-gradient(circle at top,#8E7CFF,#C38FFF);
+    padding:20px;
+}
+
+.container{
+    display:flex;
+    gap:25px;
+    max-width:1450px;
+    margin:auto;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width:300px;
+    min-height:92vh;
+    padding:25px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 10px 35px rgba(0,0,0,0.15);
+    color:white;
+}
+
+.sidebar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+}
+
+.sidebar-header h2{
+    font-size:24px;
+    font-weight:700;
+}
+
+.x_button button{
+    background:rgba(255,255,255,0.2);
+    border:none;
+    color:white;
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    font-size:20px;
+    cursor:pointer;
+}
+
+/* Menu */
+
+.menu_items{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:15px;
+    margin-bottom:18px;
+    border-radius:18px;
+    background:rgba(255,255,255,0.12);
+    cursor:pointer;
+    transition:0.3s;
+    text-decoration:none;
+    color:white;
+}
+
+.menu_items:hover{
+    background:rgba(255,255,255,0.22);
+    transform:translateX(5px);
+}
+
+.active{
+    background:white;
+    color:#7A5FFF;
+    font-weight:600;
+}
+
+/* Main */
+
+.main{
+    flex:1;
+    min-height:92vh;
+    padding:30px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 10px 35px rgba(0,0,0,0.15);
+    overflow-y:auto;
+}
+
+/* Header */
+
+.header-card{
+    background:rgba(255,255,255,0.18);
+    border-radius:25px;
+    padding:30px;
+    color:white;
+    margin-bottom:25px;
+}
+
+.header-card h2{
+    font-size:36px;
+    margin-bottom:8px;
+}
+
+/* Grid */
+
+.quiz-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+}
+
+.quiz-card{
+    background:rgba(255,255,255,0.18);
+    border-radius:25px;
+    padding:25px;
+    color:white;
+    transition:0.3s;
+}
+
+.quiz-card:hover{
+    transform:translateY(-6px);
+    background:rgba(255,255,255,0.25);
+}
+
+.quiz-icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+/* Buttons */
+
+.button{
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:15px;
+    background:white;
+    color:#7A5FFF;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.button:hover{
+    background:#eee7ff;
+}
+
+/* Progress */
+
+.progress-section{
+    margin-top:25px;
+    background:rgba(255,255,255,0.18);
+    padding:25px;
+    border-radius:25px;
+    color:white;
+}
+
+.progress-bar{
+    width:100%;
+    height:18px;
+    background:rgba(255,255,255,0.25);
+    border-radius:20px;
+    margin-top:15px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    width:70%;
+    height:100%;
+    background:white;
+    border-radius:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <div class="sidebar-header">
+            <h2>STUDY BUDDY</h2>
+
+            <div class="x_button">
+                <button>☰</button>
+            </div>
+        </div>
+
+        <a href="main_page.html" class="menu_items">
+            🏠 <span>Home</span>
+        </a>
+
+        <a href="Study_resources.html" class="menu_items">
+            📚 <span>Study Resources</span>
+        </a>
+
+        <a href="Quiz and Revision.html" class="menu_items active">
+            📝 <span>Quiz & Revision</span>
+        </a>
+
+        <a href="Calender.html" class="menu_items">
+            📅 <span>Calendar</span>
+        </a>
+
+        <a href="logout.html" class="menu_items">
+            🚪 <span>Log Out</span>
+        </a>
+
+    </div>
+
+    <!-- Main -->
+
+    <div class="main">
+
+        <div class="header-card">
+            <h2>Quiz & Revision</h2>
+            <p>Test your knowledge and track your progress.</p>
+        </div>
+
+        <div class="quiz-grid">
+
+            <div class="quiz-card">
+                <div class="quiz-icon">➗</div>
+                <h3>Math</h3>
+                <p>test your math skills</p>
+
+                <button class="button"
+                onclick="window.location.href='http://127.0.0.1:5001'">
+                    Start Quiz
+                </button>
+            </div>
+
+            <div class="quiz-card">
+                <div class="quiz-icon">🧪</div>
+                <h3>Physics</h3>
+                <p>test your physics skills</p>
+
+                <button class="button"
+                onclick="window.location.href='http://127.0.0.1:5002'">
+                    Start Quiz
+                </button>
+            </div>
+
+            <div class="quiz-card">
+                <div class="quiz-icon">💻</div>
+                <h3>Computer Science</h3>
+                <p>test you computer science skills</p>
+
+                <button class="button"
+                onclick="window.location.href='http://127.0.0.1:5003'">
+                    Start Quiz
+                </button>
+            </div>
+
+            <div class="quiz-card">
+                <div class="quiz-icon">📖</div>
+                <h3>English</h3>
+                <p>test your grammar skills</p>
+
+                <button class="button"
+                onclick="window.location.href='http://127.0.0.1:5001'">
+                    Start Quiz
+                </button>
+            </div>
+
+        </div>
+
+        <div class="progress-section">
+            <h3>This Week's Progress</h3>
+            <p>You completed 7 out of 10 revision goals.</p>
+
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

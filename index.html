@@ -1,0 +1,113 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Buddy - Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #8E7CFF, #C38FFF);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quiz-wrapper {
+    width: 100%;
+    max-width: 750px;
+}
+
+.question-card {
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+    border-radius: 30px;
+    padding: 35px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.question-text {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.option-btn {
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 18px 20px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.option-btn:hover {
+    background: rgba(255,255,255,0.28);
+    transform: translateY(-3px);
+}
+
+.option-letter {
+    background: rgba(255,255,255,0.25);
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+</style>
+</head>
+<body>
+
+<div class="quiz-wrapper">
+
+    <div class="question-card">
+        <div class="question-text">{{ question }}</div>
+    </div>
+
+    <form method="POST" action="/answer">
+        <div class="options-grid">
+            {% for letter, opt in opts.items() %}
+            <button type="submit" name="choice" value="{{ letter }}" class="option-btn">
+                <div class="option-letter">{{ letter }}</div>
+                {{ opt }}
+            </button>
+            {% endfor %}
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>
