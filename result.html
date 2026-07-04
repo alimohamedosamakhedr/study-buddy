@@ -3,9 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <title>Study Buddy - Result</title>
 <style>
 
@@ -205,29 +202,44 @@ a{
     opacity:0.75;
 }
 
-.back-button {
-    margin-top: 20px;
-    width: 100%;
-    padding: 20px;
-    border: none;
-    border-radius: 18px;
-    background: white;
-    color: #7A5FFF;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.back-button:hover {
-    background: #f1ecff;
-    transform: translateY(-3px);
-}
-
 </style>
 </head>
 <body>
 <div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>STUDY BUDDY</h2>
+            <div class="x_button">
+                <button>☰</button>
+            </div>
+        </div>
+
+        <a href="main_page.html" class="menu_items">
+            <div>🏠</div>
+            <span>Home</span>
+        </a>
+
+        <a href="Study_resources.html" class="menu_items">
+            <div>📚</div>
+            <span>Study Resources</span>
+        </a>
+
+        <a href="Quiz and Revision.html" class="menu_items menu_items_selected">
+            <div>📝</div>
+            <span>Quiz & Revision</span>
+        </a>
+
+        <a href="Calender.html" class="menu_items">
+            <div>📅</div>
+            <span>Calendar</span>
+        </a>
+
+        <a href="logout.html" class="menu_items">
+            🚪 <span>Log Out</span>
+        </a>
+    </div>
 
     <!-- Result -->
     <div class="result-wrapper">
@@ -283,7 +295,7 @@ a{
             </div>
             {% endfor %}
         </div>
-        <button class="back-button" onclick="history.go(-6)" >Back to Quiz</button> 
+
     </div>
 </div>
 </body>
