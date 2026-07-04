@@ -7,8 +7,8 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open mainpage.html",
-            "file": "c:\\Users\\User\\Desktop\\mini it resources\\mainpage.html"
+            "name": "${file}",
+            "file": "${file}"
         }
     ]
 }
