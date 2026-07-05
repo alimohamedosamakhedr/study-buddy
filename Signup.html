@@ -199,6 +199,7 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
 
     const message = document.getElementById("message");
 
+    // Check if passwords match
     if(password !== confirmPassword){
 
         message.style.display = "block";
@@ -208,10 +209,29 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
 
     }
 
-    // Save user information
-    localStorage.setItem("userName", name);
-    localStorage.setItem("userEmail", email);
-    localStorage.setItem("userPassword", password);
+    // Get existing users from localStorage
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Check if email already exists
+    const emailExists = users.some(user => user.email === email);
+
+    if(emailExists){
+
+        message.style.display = "block";
+        message.style.color = "#ffdddd";
+        message.textContent = "This email is already registered!";
+        return;
+
+    }
+
+    // Save new user
+    users.push({
+        name: name,
+        email: email,
+        password: password
+    });
+
+    localStorage.setItem("users", JSON.stringify(users));
 
     message.style.display = "block";
     message.style.color = "#d4ffd4";
