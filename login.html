@@ -139,7 +139,7 @@ body{
         <h1>Study Buddy</h1>
         <p>Welcome back! Login to continue studying.</p>
     </div>
-
+    <!--user inputs-->
     <form id="loginForm">
 
         <div class="input-group">
@@ -157,20 +157,20 @@ body{
         </button>
 
     </form>
-
+    <!--messageif error-->
     <p class="error-message" id="errorMessage">
         Invalid email or password.
     </p>
-
+    <!--message if success-->
     <p class="success-message" id="successMessage">
         Sending OTP...
     </p>
-
+    <!-- sign up -->
     <div class="bottom-text">
         Don't have an account?
         <a href="Signup.html">Sign Up</a>
     </div>
-
+    <!--forgot password text-->
     <div class="forgot-text">
      <a href="ForgotPassword.html">Forgot Password?</a>
     </div>
@@ -181,15 +181,16 @@ body{
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
+//initailze emailjs 
 emailjs.init("aneKk63232SCSLr-W");
 
-document.getElementById("loginForm").addEventListener("submit", function(event){
+document.getElementById("loginForm").addEventListener("submit", function(event){ //run when input is received
 
-    event.preventDefault();
+    event.preventDefault(); // prevent page reload
 
     const email = document.getElementById("email")
-                    .value.trim()
-                    .toLowerCase();
+                    .value.trim() //remove spaces in email
+                    .toLowerCase();//convert to lowercase
 
     const password = document.getElementById("password").value;
 
@@ -199,7 +200,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event){
     const successMessage = document.getElementById("successMessage");
 
     errorMessage.style.display = "none";
-    successMessage.style.display = "none";
+    successMessage.style.display = "none"; //clears both messages
 
     // Find matching user
     const user = users.find(user =>
@@ -254,7 +255,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event){
                 "Failed to send OTP. Try again.";
 
         });
-
+        //if failed
     }
     else{
 
