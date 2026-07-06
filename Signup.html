@@ -184,6 +184,8 @@ body{
         <a href="login.html">Login</a>
     </div>
 
+    <button onclick="clearUsers()">Clear Users</button>
+
 </div>
 
 <script>
@@ -252,6 +254,11 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
     }, 1500);
 
 });
+
+    function clearUsers() {
+        localStorage.clear();
+        alert("Local Storage cleared.");
+    }
 
 </script>
 
