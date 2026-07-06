@@ -193,11 +193,17 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
     event.preventDefault();
 
     const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
+
+    const email = document.getElementById("email")
+                    .value.trim()
+                    .toLowerCase();
+
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
 
     const message = document.getElementById("message");
+
+    message.style.display = "none";
 
     // Check if passwords match
     if(password !== confirmPassword){
@@ -206,14 +212,15 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
         message.style.color = "#ffdddd";
         message.textContent = "Passwords do not match!";
         return;
-
     }
 
-    // Get existing users from localStorage
+    // Get existing users
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
     // Check if email already exists
-    const emailExists = users.some(user => user.email === email);
+    const emailExists = users.some(
+        user => user.email.toLowerCase() === email
+    );
 
     if(emailExists){
 
@@ -221,7 +228,6 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
         message.style.color = "#ffdddd";
         message.textContent = "This email is already registered!";
         return;
-
     }
 
     // Save new user
@@ -231,11 +237,15 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
         password: password
     });
 
-    localStorage.setItem("users", JSON.stringify(users));
+    localStorage.setItem(
+        "users",
+        JSON.stringify(users)
+    );
 
     message.style.display = "block";
     message.style.color = "#d4ffd4";
-    message.textContent = "Account created successfully! Redirecting to login page...";
+    message.textContent =
+        "Account created successfully! Redirecting to login page...";
 
     setTimeout(() => {
         window.location.href = "login.html";

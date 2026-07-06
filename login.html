@@ -187,16 +187,13 @@ document.getElementById("loginForm").addEventListener("submit", function(event){
 
     event.preventDefault();
 
-    const email = document.getElementById("email").value.trim();
+    const email = document.getElementById("email")
+                    .value.trim()
+                    .toLowerCase();
+
     const password = document.getElementById("password").value;
 
     const users = JSON.parse(localStorage.getItem("users")) || [];
-
-    const user = users.find(
-    user =>
-        user.email === email &&
-        user.password === password
-    );
 
     const errorMessage = document.getElementById("errorMessage");
     const successMessage = document.getElementById("successMessage");
@@ -204,15 +201,30 @@ document.getElementById("loginForm").addEventListener("submit", function(event){
     errorMessage.style.display = "none";
     successMessage.style.display = "none";
 
+    // Find matching user
+    const user = users.find(user =>
+        user.email.toLowerCase() === email &&
+        user.password === password
+    );
+
     if(user){
 
-        const otp = Math.floor(100000 + Math.random() * 900000).toString();
+        // Optional: remember who logged in
+        localStorage.setItem(
+            "currentUser",
+            JSON.stringify(user)
+        );
+
+        // Generate OTP
+        const otp = Math.floor(
+            100000 + Math.random() * 900000
+        ).toString();
 
         localStorage.setItem("loginOTP", otp);
         localStorage.setItem("otpEmail", email);
 
-        // store expiry time (15 minutes)
-        const expiryTime = Date.now() + 15 * 60 * 1000;
+        // OTP expires in 15 minutes
+        const expiryTime = Date.now() + (15 * 60 * 1000);
         localStorage.setItem("otpExpiry", expiryTime);
 
         successMessage.style.display = "block";
@@ -229,7 +241,6 @@ document.getElementById("loginForm").addEventListener("submit", function(event){
         .then(function(response){
 
             console.log("SUCCESS:", response);
-
             window.location.href = "otp.html";
 
         })
@@ -237,19 +248,23 @@ document.getElementById("loginForm").addEventListener("submit", function(event){
 
             console.log("FAILED:", error);
 
+            successMessage.style.display = "none";
             errorMessage.style.display = "block";
-            errorMessage.innerHTML = "Failed to send OTP. Try again.";
+            errorMessage.innerHTML =
+                "Failed to send OTP. Try again.";
 
         });
 
-    }else{
+    }
+    else{
 
         errorMessage.style.display = "block";
-        errorMessage.innerHTML = "Invalid email or password.";
+        errorMessage.innerHTML =
+            "Invalid email or password.";
+
     }
 
 });
-
 </script>
 
 </body>
