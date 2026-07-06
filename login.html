@@ -190,8 +190,13 @@ document.getElementById("loginForm").addEventListener("submit", function(event){
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
 
-    const savedEmail = localStorage.getItem("userEmail");
-    const savedPassword = localStorage.getItem("userPassword");
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    const user = users.find(
+    user =>
+        user.email === email &&
+        user.password === password
+    );
 
     const errorMessage = document.getElementById("errorMessage");
     const successMessage = document.getElementById("successMessage");
@@ -199,7 +204,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event){
     errorMessage.style.display = "none";
     successMessage.style.display = "none";
 
-    if(email === savedEmail && password === savedPassword){
+    if(user){
 
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
