@@ -54,4 +54,4 @@ def result():
     return render_template("result.html", score=session["score"], total=len(session["questions"]),   time_taken=time_taken )
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+      app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5001)))
